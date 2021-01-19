@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header"> Masked Input Plugin for jQuery<a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
+                        <div class="card-header"> Masked Input Plugin for jQuery
                             <div class="card-header-actions"><a class="card-header-action" href="https://github.com/digitalBush/jquery.maskedinput" target="_blank"><small
                                         class="text-muted">docs</small></a></div>
                         </div>
@@ -79,7 +79,7 @@
 
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header"> Select2<a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
+                        <div class="card-header"> Select2
                             <div class="card-header-actions"><a class="card-header-action" href="https://select2.github.io" target="_blank"><small class="text-muted">docs</small></a></div>
                         </div>
                         <div class="card-body">
@@ -176,7 +176,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header"> DateRangePicker<a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
+                        <div class="card-header"> DateRangePicker
                             <div class="card-header-actions"><a class="card-header-action" href="http://www.daterangepicker.com" target="_blank"><small class="text-muted">docs</small></a></div>
                         </div>
                         <div class="card-body">

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header"> CoreUI Select<a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a></div>
+                        <div class="card-header"> CoreUI Select</div>
                         <div class="card-body">
                             <form>
                                 <h2>Dropdown</h2>

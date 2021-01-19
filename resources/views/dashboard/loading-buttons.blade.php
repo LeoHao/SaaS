@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="fade-in">
             <div class="card">
-                <div class="card-header"> Loading buttons<a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
+                <div class="card-header"> Loading buttons
                     <div class="card-header-actions"></div>
                 </div>
                 <div class="card-body">

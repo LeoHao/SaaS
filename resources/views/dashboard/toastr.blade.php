@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="c-fade-in">
             <div class="card">
-                <div class="card-header"> Toastr Notifications<a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
+                <div class="card-header"> Toastr Notifications
                     <div class="card-header-actions"><a class="card-header-action" href="https://codeseven.github.io/toastr/demo.html" target="_blank"><small class="text-muted">docs</small></a></div>
                 </div>
                 <div class="card-body">
