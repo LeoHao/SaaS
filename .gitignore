@@ -15,3 +15,8 @@ composer.phar
 .idea
 .phpstorm.meta.php
 tests
+package-lock.json
+package.json
+phpunit.xml
+phpunit.xml.bak
+server.php
