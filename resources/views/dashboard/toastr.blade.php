@@ -201,5 +201,5 @@
 @section('javascript')
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/toastr.js') }}"></script>
-    <script src="{{ asset('js/toastr1.js') }}"></script>
+    <script src="{{ asset('js/custom/toastr.js') }}"></script>
 @endsection

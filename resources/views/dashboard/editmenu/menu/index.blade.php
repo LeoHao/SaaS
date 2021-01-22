@@ -18,8 +18,6 @@
                         <tr>
                             <th>{{ __('title.Name') }}</th>
                             <th></th>
-                            <th></th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,11 +28,7 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('menu.index', ['menu' => $menu1->id] ) }}">Show</a>
-                                </td>
-                                <td>
                                     <a class="btn btn-primary" href="{{ route('menu.menu.edit', ['id' => $menu1->id] ) }}">Edit</a>
-                                </td>
-                                <td>
                                     <a class="btn btn-danger" href="{{ route('menu.menu.delete', ['id' => $menu1->id] ) }}">Delete</a>
                                 </td>
                             </tr>

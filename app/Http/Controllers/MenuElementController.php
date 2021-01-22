@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use App\Services\EditMenuViewService;
-use App\Models\Menurole;    
-use App\Http\Menus\GetSidebarMenu;
+use App\Models\Menurole;
 use App\Models\Menulist;
 use App\Models\Menus;
 use Illuminate\Validation\Rule;
@@ -25,6 +23,10 @@ class MenuElementController extends Controller
     }
 
     public function index(Request $request){
+        $menuInfo = Menus::select('menus.*')
+            ->where('menus.menu_id', '=', 1)
+            ->orderBy('menus.sequence', 'asc')->get();
+
         if($request->has('menu')){
             $menuId = $request->input('menu');
         }else{
@@ -35,12 +37,12 @@ class MenuElementController extends Controller
                 $menuId = $menuId->id;
             }
         }
-        $getSidebarMenu = new GetSidebarMenu();
+
         return view('dashboard.editmenu.index', array(
             'menulist'      => Menulist::all(),
             'role'          => 'admin',
             'roles'         => RolesService::get(),
-            'menuToEdit'    => $getSidebarMenu->getAll( $menuId ),
+            'menuToEdit'    => $menuInfo,
             'thisMenu'      => $menuId,
         ));
     }
@@ -82,7 +84,7 @@ class MenuElementController extends Controller
             ->orderBy('menus.sequence', 'asc')->get();
         return response()->json(
             $result
-        ); 
+        );
     }
 
     public function create(){
@@ -140,7 +142,7 @@ class MenuElementController extends Controller
             $menuRole->save();
         }
         $request->session()->flash('message', 'Successfully created menu element');
-        return redirect()->route('menu.create'); 
+        return redirect()->route('menu.create');
     }
 
     public function edit(Request $request){
@@ -190,7 +192,7 @@ class MenuElementController extends Controller
             }
         }
         $request->session()->flash('message', 'Successfully update menu element');
-        return redirect()->route('menu.edit', ['id'=>$request->input('id')]); 
+        return redirect()->route('menu.edit', ['id'=>$request->input('id')]);
     }
 
     public function show(Request $request){

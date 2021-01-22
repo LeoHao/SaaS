@@ -1,8 +1,3 @@
-/*!
-  * CoreUI Plugins - Chart.js for CoreUI 3 v2.0.0 (https://coreui.io)
-  * Copyright 2020 creativeLabs Łukasz Holeczek
-  * Licensed under MIT (https://coreui.io/license/)
-  */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
@@ -16309,4 +16304,3 @@
 	return index_umd;
 
 })));
-//# sourceMappingURL=coreui-chartjs.bundle.js.map

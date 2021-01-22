@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Users extends Model
+class Users111 extends Model
 {
     use SoftDeletes;
     use HasFactory;
@@ -17,6 +17,11 @@ class Users extends Model
     public function notes()
     {
         return $this->hasMany('App\Models\Notes');
+    }
+
+    public function companies()
+    {
+        return $this->hasMany('App\Models\Company');
     }
 
     protected $dates = [

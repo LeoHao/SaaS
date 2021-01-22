@@ -10,11 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::group(['middleware' => ['get.menu']], function () {
-    Route::group(['middleware' => ['role:user']], function () {
-        Route::get('/', function () {           return view('dashboard.homepage'); });
-
+Auth::routes();
+Route::group(['middleware' => ['navigation','login']], function () {
+    Route::get('/', function () {           return view('dashboard.homepage'); });
+    Route::group(['middleware' => ['role:admin']], function () {
         Route::get('/colors', function () {     return view('dashboard.colors'); });
         Route::get('/typography', function () { return view('dashboard.typography'); });
         Route::get('/charts', function () {     return view('dashboard.charts'); });
@@ -28,6 +27,7 @@ Route::group(['middleware' => ['get.menu']], function () {
         Route::get('/widgets', function () {    return view('dashboard.widgets'); });
         Route::get('/404', function () {        return view('dashboard.404'); });
         Route::get('/500', function () {        return view('dashboard.500'); });
+
         Route::prefix('base')->group(function () {
             Route::get('/breadcrumb', function(){   return view('dashboard.base.breadcrumb'); });
             Route::get('/cards', function(){        return view('dashboard.base.cards'); });
@@ -65,9 +65,8 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::get('/badge', function(){    return view('dashboard.notifications.badge'); });
             Route::get('/modals', function(){   return view('dashboard.notifications.modals'); });
         });
-        Route::resource('notes', 'NotesController');
     });
-    Auth::routes();
+
 
     Route::resource('resource/{table}/resource', 'ResourceController')->names([
         'index'     => 'resource.index',
@@ -79,7 +78,7 @@ Route::group(['middleware' => ['get.menu']], function () {
         'destroy'   => 'resource.destroy'
     ]);
 
-    Route::group(['middleware' => ['role:admin']], function () {
+    Route::group(['middleware' => ['role:user']], function () {
         Route::resource('bread',  'BreadController');   //create BREAD (resource)
         Route::resource('users',        'UsersController')->except( ['create', 'store'] );
         Route::resource('roles',        'RolesController');
@@ -108,21 +107,36 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::post('/update',  'MenuController@update')->name('menu.menu.update');
             Route::get('/delete',   'MenuController@delete')->name('menu.menu.delete');
         });
-        Route::prefix('media')->group(function () {
-            Route::get('/',                 'MediaController@index')->name('media.folder.index');
-            Route::get('/folder/store',     'MediaController@folderAdd')->name('media.folder.add');
-            Route::post('/folder/update',   'MediaController@folderUpdate')->name('media.folder.update');
-            Route::get('/folder',           'MediaController@folder')->name('media.folder');
-            Route::post('/folder/move',     'MediaController@folderMove')->name('media.folder.move');
-            Route::post('/folder/delete',   'MediaController@folderDelete')->name('media.folder.delete');;
 
-            Route::post('/file/store',      'MediaController@fileAdd')->name('media.file.add');
-            Route::get('/file',             'MediaController@file');
-            Route::post('/file/delete',     'MediaController@fileDelete')->name('media.file.delete');
-            Route::post('/file/update',     'MediaController@fileUpdate')->name('media.file.update');
-            Route::post('/file/move',       'MediaController@fileMove')->name('media.file.move');
-            Route::post('/file/cropp',      'MediaController@cropp');
-            Route::get('/file/copy',        'MediaController@fileCopy')->name('media.file.copy');
+        //设备
+        Route::prefix('device/')->group(function () {
+            Route::get('/',         'DeviceController@index')->name('device.index');//展示
+            Route::get('/create',   'DeviceController@create')->name('device.create');//创建
+            Route::post('/store',   'DeviceController@store')->name('device.store');//插入
+            Route::get('/edit',     'DeviceController@edit')->name('device.edit');//编辑
+            Route::post('/update',  'DeviceController@update')->name('device.update');//更新
+            Route::get('/delete',   'DeviceController@delete')->name('device.delete');//删除
+        });
+
+        //公司
+        Route::prefix('company/')->group(function () {
+            Route::get('/',         'CompanyController@index')->name('company.index');//展示
+            Route::get('/create',   'CompanyController@create')->name('company.create');//创建
+            Route::post('/store',   'CompanyController@store')->name('company.store');//插入
+            Route::get('/edit',     'CompanyController@edit')->name('company.edit');//编辑
+            Route::post('/update',  'CompanyController@update')->name('company.update');//更新
+            Route::get('/delete',   'CompanyController@delete')->name('company.delete');//删除
+        });
+
+        //插件
+        Route::prefix('plugin/')->group(function () {
+            Route::get('/',         'PluginController@index')->name('plugin.index');//列表
+            Route::get('/show',      'PluginController@show')->name('plugin.show');//展示
+            Route::get('/create',   'PluginController@create')->name('plugin.create');//创建
+            Route::post('/store',   'PluginController@store')->name('plugin.store');//插入
+            Route::get('/edit',     'PluginController@edit')->name('plugin.edit');//编辑
+            Route::post('/update',  'PluginController@update')->name('plugin.update');//更新
+            Route::get('/delete',   'PluginController@delete')->name('plugin.delete');//删除
         });
     });
 });

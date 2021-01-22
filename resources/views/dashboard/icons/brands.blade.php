@@ -1,12 +1,5 @@
 @extends('dashboard.base')
 
-@section('css')
-
-<link href="{{ asset('css/brand.min.css') }}" rel="stylesheet">
-
-@endsection;
-
-
 @section('content')
 
         <div class="container-fluid">

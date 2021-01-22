@@ -71,8 +71,8 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('js/Chart.min.js') }}"></script>
-    <script src="{{ asset('js/coreui-chartjs.bundle.js') }}"></script>
+    <script src="{{ asset('js/chart.min.js') }}"></script>
+    <script src="{{ asset('js/chartjs.bundle.js') }}"></script>
     <script src="{{ asset('js/charts.js') }}"></script>
     <script src="{{ asset('js/loading-buttons.js') }}"></script>
 

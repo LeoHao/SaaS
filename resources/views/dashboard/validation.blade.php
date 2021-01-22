@@ -65,6 +65,5 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('js/jquery.slim.min.js') }}"></script>
     <script src="{{ asset('js/validation.js') }}"></script>
 @endsection

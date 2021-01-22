@@ -3,21 +3,21 @@
         <ul class="c-nav">
           <li class="c-nav-item"><a class="c-nav-link" href="/">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-speedometer"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-speedometer"></use>
               </svg> Dashboard<span class="badge badge-info">NEW</span></a></li>
           <li class="c-nav-title">Theme</li>
           <li class="c-nav-item"><a class="c-nav-link" href="/colors">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-drop1"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-drop1"></use>
               </svg> Colors</a></li>
           <li class="c-nav-item"><a class="c-nav-link" href="/typography">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-pencil"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-pencil"></use>
               </svg> Typography</a></li>
           <li class="c-nav-title">Components</li>
           <li class="c-nav-item c-nav-dropdown"><a class="c-nav-link c-nav-dropdown-toggle" href="#">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-puzzle"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-puzzle"></use>
               </svg> Base</a>
             <ul class="c-nav-dropdown-items">
               <li class="c-nav-item"><a class="c-nav-link" href="/base/breadcrumb"><span class="c-nav-icon"></span> Breadcrumb</a></li>
@@ -40,7 +40,7 @@
           </li>
           <li class="c-nav-item c-nav-dropdown"><a class="c-nav-link c-nav-dropdown-toggle" href="#">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-cursor"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-cursor"></use>
               </svg> Buttons</a>
             <ul class="c-nav-dropdown-items">
               <li class="c-nav-item"><a class="c-nav-link" href="/buttons/buttons"><span class="c-nav-icon"></span> Buttons</a></li>
@@ -51,11 +51,11 @@
           </li>
           <li class="c-nav-item"><a class="c-nav-link" href="/charts">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-chart-pie"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-chart-pie"></use>
               </svg> Charts</a></li>
           <li class="c-nav-item c-nav-dropdown"><a class="c-nav-link c-nav-dropdown-toggle" href="#">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-star"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-star"></use>
               </svg> Icons</a>
             <ul class="c-nav-dropdown-items">
               <li class="c-nav-item"><a class="c-nav-link" href="/icon/coreui-icons"><span class="c-nav-icon"></span> CoreUI Icons<span class="badge badge-success">Free</span></a></li>
@@ -65,7 +65,7 @@
           </li>
           <li class="c-nav-item c-nav-dropdown"><a class="c-nav-link c-nav-dropdown-toggle" href="#">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-bell"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-bell"></use>
               </svg> Notifications</a>
             <ul class="c-nav-dropdown-items">
               <li class="c-nav-item"><a class="c-nav-link" href="/notifications/alerts"><span class="c-nav-icon"></span> Alerts</a></li>
@@ -75,40 +75,40 @@
           </li>
           <li class="c-nav-item"><a class="c-nav-link" href="/widgets">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-calculator"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-calculator"></use>
               </svg> Widgets<span class="badge badge-info">NEW</span></a></li>
           <li class="c-nav-divider"></li>
           <li class="c-nav-title">Extras</li>
           <li class="c-nav-item c-nav-dropdown"><a class="c-nav-link c-nav-dropdown-toggle" href="#">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-star"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-star"></use>
               </svg> Pages</a>
             <ul class="c-nav-dropdown-items">
               <li class="c-nav-item"><a class="c-nav-link" href="/login" target="_top">
                   <svg class="c-nav-icon">
-                    <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-account-logout"></use>
+                    <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-account-logout"></use>
                   </svg> Login</a></li>
               <li class="c-nav-item"><a class="c-nav-link" href="/register" target="_top">
                   <svg class="c-nav-icon">
-                    <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-account-logout"></use>
+                    <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-account-logout"></use>
                   </svg> Register</a></li>
               <li class="c-nav-item"><a class="c-nav-link" href="/404" target="_top">
                   <svg class="c-nav-icon">
-                    <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-bug"></use>
+                    <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-bug"></use>
                   </svg> Error 404</a></li>
               <li class="c-nav-item"><a class="c-nav-link" href="/500" target="_top">
                   <svg class="c-nav-icon">
-                    <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-bug"></use>
+                    <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-bug"></use>
                   </svg> Error 500</a></li>
             </ul>
           </li>
           <li class="c-nav-item mt-auto"><a class="c-nav-link c-nav-link-success" href="https://coreui.io" target="_top">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-cloud-download"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-cloud-download"></use>
               </svg> Download CoreUI</a></li>
           <li class="c-nav-item"><a class="c-nav-link c-nav-link-danger" href="https://coreui.io/pro/" target="_top">
               <svg class="c-nav-icon">
-                <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-layers"></use>
+                <use xlink:href="/assets/icons/free-symbol-defs.svg#cui-layers"></use>
               </svg> Try CoreUI<strong>PRO</strong></a></li>
         </ul>
       </nav>

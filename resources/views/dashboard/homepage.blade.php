@@ -11,7 +11,7 @@
                       <div class="btn-group float-right">
                         <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <svg class="c-icon">
-                            <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-settings"></use>
+                            <use xlink:href="assets/icons/free-symbol-defs.svg#cui-settings"></use>
                           </svg>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
@@ -30,7 +30,7 @@
                     <div class="card-body pb-0">
                       <button class="btn btn-transparent p-0 float-right" type="button">
                         <svg class="c-icon">
-                          <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-location-pin"></use>
+                          <use xlink:href="assets/icons/free-symbol-defs.svg#cui-location-pin"></use>
                         </svg>
                       </button>
                       <div class="text-value-lg">9.823</div>
@@ -48,7 +48,7 @@
                       <div class="btn-group float-right">
                         <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <svg class="c-icon">
-                            <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-settings"></use>
+                            <use xlink:href="assets/icons/free-symbol-defs.svg#cui-settings"></use>
                           </svg>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
@@ -68,7 +68,7 @@
                       <div class="btn-group float-right">
                         <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <svg class="c-icon">
-                            <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-settings"></use>
+                            <use xlink:href="assets/icons/free-symbol-defs.svg#cui-settings"></use>
                           </svg>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
@@ -95,7 +95,7 @@
                     <div class="col-sm-7 d-none d-md-block">
                       <button class="btn btn-primary float-right" type="button">
                         <svg class="c-icon">
-                          <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-cloud-download"></use>
+                          <use xlink:href="assets/icons/free-symbol-defs.svg#cui-cloud-download"></use>
                         </svg>
                       </button>
                       <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
@@ -350,7 +350,7 @@
                           <div class="progress-group">
                             <div class="progress-group-header">
                               <svg class="c-icon progress-group-icon">
-                                <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-user"></use>
+                                <use xlink:href="assets/icons/free-symbol-defs.svg#cui-user"></use>
                               </svg>
                               <div>Male</div>
                               <div class="ml-auto font-weight-bold">43%</div>
@@ -364,7 +364,7 @@
                           <div class="progress-group mb-5">
                             <div class="progress-group-header">
                               <svg class="c-icon progress-group-icon">
-                                <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-user-female"></use>
+                                <use xlink:href="assets/icons/free-symbol-defs.svg#cui-user-female"></use>
                               </svg>
                               <div>Female</div>
                               <div class="ml-auto font-weight-bold">37%</div>
@@ -378,7 +378,7 @@
                           <div class="progress-group">
                             <div class="progress-group-header align-items-end">
                               <svg class="c-icon progress-group-icon">
-                                <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-globe-alt"></use>
+                                <use xlink:href="assets/icons/free-symbol-defs.svg#cui-globe-alt"></use>
                               </svg>
                               <div>Organic Search</div>
                               <div class="ml-auto font-weight-bold mr-2">191.235</div>
@@ -393,7 +393,7 @@
                           <div class="progress-group">
                             <div class="progress-group-header align-items-end">
                               <svg class="c-icon progress-group-icon">
-                                <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-facebook"></use>
+                                <use xlink:href="assets/icons/free-symbol-defs.svg#cui-facebook"></use>
                               </svg>
                               <div>Facebook</div>
                               <div class="ml-auto font-weight-bold mr-2">51.223</div>
@@ -408,7 +408,7 @@
                           <div class="progress-group">
                             <div class="progress-group-header align-items-end">
                               <svg class="c-icon progress-group-icon">
-                                <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-twitter"></use>
+                                <use xlink:href="assets/icons/free-symbol-defs.svg#cui-twitter"></use>
                               </svg>
                               <div>Twitter</div>
                               <div class="ml-auto font-weight-bold mr-2">37.564</div>
@@ -423,7 +423,7 @@
                           <div class="progress-group">
                             <div class="progress-group-header align-items-end">
                               <svg class="c-icon progress-group-icon">
-                                <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-linkedin"></use>
+                                <use xlink:href="assets/icons/free-symbol-defs.svg#cui-linkedin"></use>
                               </svg>
                               <div>LinkedIn</div>
                               <div class="ml-auto font-weight-bold mr-2">27.319</div>
@@ -444,7 +444,7 @@
                           <tr>
                             <th class="text-center">
                               <svg class="c-icon">
-                                <use xlink:href="assets/icons/coreui/free-symbol-defs.svg#cui-people"></use>
+                                <use xlink:href="assets/icons/free-symbol-defs.svg#cui-people"></use>
                               </svg>
                             </th>
                             <th>User</th>
@@ -631,8 +631,8 @@
 @endsection
 
 @section('javascript')
-
-    <script src="{{ asset('js/Chart.min.js') }}"></script>
-    <script src="{{ asset('js/coreui-chartjs.bundle.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}" defer></script>
+  <script src="{{ asset('js/utils.js') }}"></script>
+  <script src="{{ asset('js/chart.min.js') }}"></script>
+    <script src="{{ asset('js/chartjs.bundle.js') }}"></script>
+    <script src="{{ asset('js/custom/main.js') }}" defer></script>
 @endsection
