@@ -19,7 +19,7 @@ class CreateDevicesTable extends Migration
             $table->string('mac')->unique();
             $table->string('sn')->unique();
             $table->string('uid')->comment('user->id');
-            $table->bigInteger('cid')->comment('company->id');
+            $table->bigInteger('company_id')->comment('company->id');
             $table->timestamps();
             $table->softDeletes();
         });

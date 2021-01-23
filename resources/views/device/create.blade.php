@@ -13,8 +13,10 @@
                         </div>
                         <div class="card-body">
                             <form action="{{ route('device.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="company_id" value="{{ \Illuminate\Support\Facades\Auth::user()->cid }}">
                                 @if(Session::has('message'))
-                                    <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
+                                    <div class="alert alert-{{Session::get('message')['type']}}" role="alert">{{Session::get('message')['message']}}</div>
                                 @endif
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -28,15 +30,15 @@
 
                                 <div class="form-group">
                                     <label for="company">设备名称</label>
-                                    <input class="form-control" id="company" type="text" placeholder="" required>
+                                    <input class="form-control" name="name" type="text" placeholder="" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="vat">mac地址</label>
-                                    <input class="form-control" id="vat" type="text" placeholder="例如: [00:1B:44:11:3A:B7]" required>
+                                    <input class="form-control" name="mac" type="text" placeholder="例如: [00:1B:44:11:3A:B7]" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="street">sn_code</label>
-                                    <input class="form-control" id="street" type="text" placeholder="设备标签上的SN码" required>
+                                    <input class="form-control" name="sn" type="text" placeholder="设备标签上的SN码" required>
                                 </div>
 
                                 <div class="card-footer">

@@ -28,13 +28,15 @@ class PluginController extends Controller
     public function getValidateArray()
     {
         return [
-            'menu' => 'required|string', 'present' => 'required|string', 'description' => 'required|string',
+            'menu' => 'required|string',
+            'present' => 'required|string',
+            'description' => 'required|string',
         ];
     }
 
     public function index(Request $request)
     {
-        $data = Plugin::all();
+        $data = Plugin::with('companyPlugins')->get();
         return view('plugin.index', [
             'data' => $data,
         ]);
@@ -42,10 +44,23 @@ class PluginController extends Controller
 
     public function show(Request $request)
     {
-        $data = Plugin::all();
+        $data = Plugin::with('companyPlugins')->where('status' , 1)->get();
         return view('plugin.show', [
             'data' => $data,
         ]);
+    }
+
+    public function open(Request $request)
+    {
+        $model = CompanyPlugin::updateOrCreate(['company_id' => Auth::user()->cid, 'plugin_id' => $request->id], ['status' => $request->status ? 1 : 0]);
+        $response = [
+           'id' => $model->id,
+           'pid' => $request->id,
+           'status' => $model->status,
+           'oldstatus' => $request->status,
+           'aaa' => $model->toArray(),
+        ];
+        return response()->json($response);
     }
 
     public function create()
@@ -113,11 +128,11 @@ class PluginController extends Controller
     {
         $model = Plugin::where('id', '=', $request->input('id'))->first();
         //        $model->delete();
-        $where = [
+        $where              = [
             ['plugin_id', '=', $model->id], ['status', '!=', 2],
         ];
         $companyPluginModel = CompanyPlugin::where($where);
-        if (empty($companyPluginModel->get())){
+        if (empty($companyPluginModel->get())) {
             $model->delete();
             $companyPluginModel->delete();
         }

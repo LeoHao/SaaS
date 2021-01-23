@@ -27,7 +27,9 @@ class CreateCompaniesTable extends Migration
             $table->string('name')->comment('插件名');
             $table->string('present')->comment('介绍');
             $table->string('description')->comment('说明');
+            $table->tinyInteger('status')->comment('0:未开启 | 1:开启');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('company_plugins', function (Blueprint $table) {

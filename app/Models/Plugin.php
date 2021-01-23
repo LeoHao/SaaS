@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Plugin extends Model
 {
     use HasFactory;
+
+    public function companyPlugins(){
+        return $this->hasOne('App\Models\CompanyPlugin','plugin_id');
+    }
 }
