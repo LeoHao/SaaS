@@ -141,6 +141,9 @@
                                         <th>SN</th>
                                         <th>所属公司</th>
                                         <th>操作</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
