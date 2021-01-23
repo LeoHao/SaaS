@@ -10,7 +10,7 @@
                         <div class="col-sm-12 col-xl-3">
                             <div class="card">
                                 <div class="card-header"> {{$item->name}}
-                                    <div class="card-header-actions"><a class="card-header-action" href="{{ route('plugin.show') }}" {{--target="_blank"--}}><small class="text-muted">docs</small></a></div>
+                                    <div class="card-header-actions"><a class="card-header-action" href="{{ route('plugin.market') }}" {{--target="_blank"--}}><small class="text-muted">docs</small></a></div>
                                 </div>
                                 <div class="card-body">
                                     <div class="jumbotron">

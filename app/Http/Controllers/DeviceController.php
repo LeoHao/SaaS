@@ -22,7 +22,7 @@ class DeviceController extends Controller
 
     public function index(Request $request)
     {
-        $data = Device::where('cid', Auth::user()->cid)->get();
+        $data = Device::where('company_id', Auth::user()->company_id)->get();
         return view('device.index', [
             'data' => $data,
         ]);

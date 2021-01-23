@@ -154,13 +154,13 @@
                                                 <span class="badge badge-success">Active</span>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary" href="{{ route('index.show', ['id' => $item['id']]) }}">查看</a>
+                                                <a class="btn btn-primary" href="{{ route('device.show', ['id' => $item['id']]) }}">查看</a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary" href="{{ route('index.edit', ['id' => $item['id']]) }}">编辑</a>
+                                                <a class="btn btn-primary" href="{{ route('device.edit', ['id' => $item['id']]) }}">编辑</a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-danger" href="{{ route('index.delete', ['id' => $item['id']]) }}">解绑</a>
+                                                <a class="btn btn-danger" href="{{ route('device.delete', ['id' => $item['id']]) }}">解绑</a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -42,10 +42,10 @@ class PluginController extends Controller
         ]);
     }
 
-    public function show(Request $request)
+    public function market(Request $request)
     {
         $data = Plugin::with('companyPlugins')->where('status' , 1)->get();
-        return view('plugin.show', [
+        return view('plugin.market', [
             'data' => $data,
         ]);
     }
@@ -91,55 +91,6 @@ class PluginController extends Controller
 
     public function update(Request $request)
     {
-
-        $validatedData = $request->validate($this->getValidateArray());
-
-
-        $menus          = Menus::where('id', '=', $request->input('id'))->first();
-        $menus->slug    = $request->input('type');
-        $menus->menu_id = $request->input('menu');
-        $menus->icon    = $request->input('icon');
-        $menus->href    = $request->input('href');
-        $menus->name    = $request->input('name');
-        if ($request->input('type') === 'title' || $request->input('parent') === 'none') {
-            $menus->parent_id = null;
-        } else {
-            if ($request->input('parent') === $request->input('id')) { //can't be self parent
-                $menus->parent_id = null;
-            } else {
-                $menus->parent_id = $request->input('parent');
-            }
-        }
-        $menus->save();
-        Menurole::where('menus_id', '=', $request->input('id'))->delete();
-        if ($request->has('role')) {
-            foreach ($request->input('role') as $role) {
-                $menuRole            = new Menurole();
-                $menuRole->role_name = $role;
-                $menuRole->menus_id  = $request->input('id');
-                $menuRole->save();
-            }
-        }
-        $request->session()->flash('message', 'Successfully update menu element');
-        return redirect()->route('menu.edit', ['id' => $request->input('id')]);
-    }
-
-    public function delete(Request $request)
-    {
-        $model = Plugin::where('id', '=', $request->input('id'))->first();
-        //        $model->delete();
-        $where              = [
-            ['plugin_id', '=', $model->id], ['status', '!=', 2],
-        ];
-        $companyPluginModel = CompanyPlugin::where($where);
-        if (empty($companyPluginModel->get())) {
-            $model->delete();
-            $companyPluginModel->delete();
-        }
-
-        $request->session()->flash('message', 'Successfully deleted menu element');
-        $request->session()->flash('back', 'plugin.index');
-        $request->session()->flash('backParams', ['id' => $model->id]);
         return view('plugin.index');
     }
 
