@@ -7,7 +7,7 @@
             <div class="row">
                 @if(!empty($data))
                     @foreach($data as $item)
-                        <div class="col-sm-12 col-xl-3">
+                        <div class="col-sm-12 col-xl-4">
                             <div class="card">
                                 <div class="card-header"> {{$item->name}}
                                     <div class="card-header-actions"><a class="card-header-action" href="{{ route('plugin.market') }}" {{--target="_blank"--}}><small class="text-muted">docs</small></a></div>
@@ -15,7 +15,7 @@
                                 <div class="card-body">
                                     <div class="jumbotron">
                                         <h3>{{$item->name}}</h3>
-                                        <p class="lead pre-scrollable" style="height: 120px">
+                                        <p class="lead pre-scrollable" style="height: 50px">
                                             {{$item->present}}
                                         </p>
                                         <hr class="my-4">
