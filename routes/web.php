@@ -184,18 +184,22 @@ Route::group(['middleware' => ['navigation', 'login']], function () {
         //设备
         Route::prefix('device/')->group(function () {
             Route::get('/', 'DeviceController@index')->name('device.index');         //展示
-            Route::get('/show', 'DeviceController@show')->name('device.show');     //查看
+            Route::get('/show', 'DeviceController@show')->name('device.show');       //查看
             Route::get('/create', 'DeviceController@create')->name('device.create'); //创建
             Route::post('/store', 'DeviceController@store')->name('device.store');   //插入
             Route::get('/edit', 'DeviceController@edit')->name('device.edit');       //编辑
             Route::post('/update', 'DeviceController@update')->name('device.update');//更新
             Route::get('/delete', 'DeviceController@delete')->name('device.delete'); //删除
+
+            Route::get('/special-open', 'DeviceController@specialOpen')->name('device.special-open'); //专网开通
+            Route::get('/delete', 'DeviceController@delete')->name('device.delete'); //删除
+
         });
 
         //公司
         Route::prefix('company/')->group(function () {
             Route::get('/', 'CompanyController@index')->name('company.index');         //展示
-            Route::get('/show', 'CompanyController@show')->name('company.show');     //查看
+            Route::get('/show', 'CompanyController@show')->name('company.show');       //查看
             Route::get('/create', 'CompanyController@create')->name('company.create'); //创建
             Route::post('/store', 'CompanyController@store')->name('company.store');   //插入
             Route::get('/edit', 'CompanyController@edit')->name('company.edit');       //编辑

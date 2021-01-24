@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Device;
+use App\Services\PaasService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -69,5 +70,16 @@ class DeviceController extends Controller
 
         $request->session()->flash('message', $message);
         return redirect()->route('device.create');
+    }
+
+
+    public function specialOpen(Request $request){
+        $paas = new PaasService();
+        $node_model = [];
+
+        $mac = [];
+        $extParams = [];
+        $extParams['node'] = $node_model;
+        $paas->send('plugins_network_special_open',$mac,$extParams);
     }
 }

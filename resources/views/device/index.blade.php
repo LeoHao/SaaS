@@ -144,6 +144,7 @@
                                         <th>操作</th>
                                         <th></th>
                                         <th></th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -166,6 +167,15 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-danger" href="{{ route('device.delete', ['id' => $item['id']]) }}">解绑</a>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <button class="btn btn-danger dropdown-toggle" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">专线开通</button>
+                                                    <div class="dropdown-menu" style="margin: 0px;">
+                                                        <a class="dropdown-item" href="{{ route('device.special-open', ['node_id' => $item['id'] ,'device_id'=> $item['id']]) }}">北京1</a>
+                                                        <a class="dropdown-item" href="{{ route('device.special-open', ['node_id' => $item['id'] ,'device_id'=> $item['id']]) }}">深圳1</a>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
