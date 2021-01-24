@@ -8,14 +8,14 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong>新增插件</strong>
+                            <strong>编辑插件</strong>
                             <small>Form</small>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('plugin.store') }}" method="POST">
+                            <form action="{{ route('plugin.update') }}" method="POST">
                                 @csrf
-                                @method('POST')
 
+                                <input type="hidden" name="id" value="{{ $data->id }}"/>
                                 @if(Session::has('message'))
                                     <div class="alert alert-{{Session::get('message')['type']}}" role="alert">{{Session::get('message')['message']}}</div>
                                 @endif
@@ -29,25 +29,24 @@
                                     </div>
                                 @endif
 
-                                <div class="form-group">
+                                <div class="form-group" method="POST">
                                     <label for="name">名称</label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="" required>
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="" value="{{ $data->name }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="present">介绍</label>
-                                    <input class="form-control" id="present" name="present" type="text" placeholder="" required>
+                                    <input class="form-control" id="present" name="present" type="text" placeholder="" value="{{ $data->present }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="description">描述</label>
-                                    <input class="form-control" id="description" name="description" type="text" placeholder="" required>
+                                    <input class="form-control" id="description" name="description" type="text" placeholder="" value="{{ $data->description }}" required>
                                 </div>
 
                                 <div class="card-footer">
                                     <div class="row float-right">
                                         <a class="btn btn-primary" href="{{ route('plugin.index') }}">返回</a>
                                         &nbsp;
-                                        <button class="btn btn-primary" type="submit"> 添加</button>
-
+                                        <button class="btn btn-primary" type="submit"> 更新</button>
                                     </div>
                                 </div>
                             </form>
@@ -61,6 +60,4 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('js/axios.min.js') }}"></script>
-    <script src="{{ asset('js/menu-create.js') }}"></script>
 @endsection

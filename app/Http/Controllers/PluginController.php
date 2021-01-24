@@ -28,7 +28,7 @@ class PluginController extends Controller
     public function getValidateArray()
     {
         return [
-            'menu' => 'required|string',
+            'name' => 'required|string',
             'present' => 'required|string',
             'description' => 'required|string',
         ];
@@ -42,25 +42,12 @@ class PluginController extends Controller
         ]);
     }
 
-    public function market(Request $request)
+    public function show(Request $request)
     {
-        $data = Plugin::with('companyPlugins')->where('status' , 1)->get();
-        return view('plugin.market', [
-            'data' => $data,
+        $model = Plugin::where('id', '=', $request->input('id'))->first();
+        return view('plugin.show', [
+            'data' => $model,
         ]);
-    }
-
-    public function open(Request $request)
-    {
-        $model = CompanyPlugin::updateOrCreate(['company_id' => Auth::user()->cid, 'plugin_id' => $request->id], ['status' => $request->status ? 1 : 0]);
-        $response = [
-           'id' => $model->id,
-           'pid' => $request->id,
-           'status' => $model->status,
-           'oldstatus' => $request->status,
-           'aaa' => $model->toArray(),
-        ];
-        return response()->json($response);
     }
 
     public function create()
@@ -76,22 +63,72 @@ class PluginController extends Controller
         $model->name        = $request->input('name');
         $model->present     = $request->input('present');
         $model->description = $request->input('description');
+        $model->status = 0;
         $model->save();
-        $request->session()->flash('message', '添加成功');
+
+        $message = [
+            'type' => 'success',
+            'message' => '添加成功',
+        ];
+
+        $request->session()->flash('message', $message);
+
         return redirect()->route('plugin.index');
     }
 
-
     public function edit(Request $request)
     {
+        $model = Plugin::where('id', '=', $request->input('id'))->first();
         return view('plugin.edit', [
-            'data' => Plugin::where('id', '=', $request->input('id'))->get(),
+            'data' => $model,
         ]);
     }
 
     public function update(Request $request)
     {
-        return view('plugin.index');
+        $request->validate($this->getValidateArray());
+
+        $model = Plugin::where('id', '=', $request->input('id'))->first();
+        $model->name = $request->input('name');
+        $model->present = $request->input('present');
+        $model->description = $request->input('description');
+        $model->status = 0;
+        $model->save();
+
+        $message = [
+            'type' => 'success',
+            'message' => '更新成功',
+        ];
+
+        $request->session()->flash('message', $message);
+        return redirect()->route('plugin.edit', ['id'=>$request->input('id')]);
     }
 
+    public function delete(Request $request){
+        $model = Plugin::where('id', '=', $request->input('id'))->first();
+        $model->delete();
+
+        return redirect()->route('plugin.index');
+    }
+
+    public function market(Request $request)
+    {
+        $data = Plugin::with('companyPlugins')->where('status' , 1)->get();
+        return view('plugin.market', [
+            'data' => $data,
+        ]);
+    }
+
+    public function open(Request $request)
+    {
+        $model = CompanyPlugin::updateOrCreate(['company_id' => Auth::user()->cid, 'plugin_id' => $request->id], ['status' => $request->status ? 1 : 0]);
+        $response = [
+            'id' => $model->id,
+            'pid' => $request->id,
+            'status' => $model->status,
+            'oldstatus' => $request->status,
+            'aaa' => $model->toArray(),
+        ];
+        return response()->json($response);
+    }
 }

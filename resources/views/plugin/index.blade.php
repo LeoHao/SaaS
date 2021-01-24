@@ -37,7 +37,9 @@
                                             <td>{{ $item->description }}</td>
                                             <td>{{ $item->company_id }}</td>
                                             <td>
-                                                <span class="badge badge-success">Active</span>
+                                                <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                                                    <button class="btn btn-pill btn-block btn-success">启用</button>
+                                                </div>
                                             </td>
                                             <td>
                                                 <a class="btn btn-primary" href="{{ route('plugin.show', ['id' => $item['id']]) }}">查看</a>

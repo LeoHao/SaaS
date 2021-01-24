@@ -140,8 +140,8 @@
                                         <th>mac地址</th>
                                         <th>SN</th>
                                         <th>所属公司</th>
+                                        <th>状态</th>
                                         <th>操作</th>
-                                        <th></th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -154,7 +154,9 @@
                                             <td>{{ $item->sn }}</td>
                                             <td>{{ $item->company_id }}</td>
                                             <td>
-                                                <span class="badge badge-success">Active</span>
+                                                <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                                                    <button class="btn btn-pill btn-block btn-success">在线</button>
+                                                </div>
                                             </td>
                                             <td>
                                                 <a class="btn btn-primary" href="{{ route('device.show', ['id' => $item['id']]) }}">查看</a>

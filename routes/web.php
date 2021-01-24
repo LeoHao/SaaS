@@ -206,13 +206,14 @@ Route::group(['middleware' => ['navigation', 'login']], function () {
         //插件
         Route::prefix('plugin/')->group(function () {
             Route::get('/', 'PluginController@index')->name('plugin.index');          //列表
-            Route::get('/market', 'PluginController@market')->name('plugin.market');  //插件市场
-            Route::get('/show', 'PluginController@show')->name('plugin.show');     //查看
+            Route::get('/show', 'PluginController@show')->name('plugin.show');        //查看
             Route::get('/create', 'PluginController@create')->name('plugin.create');  //创建
             Route::post('/store', 'PluginController@store')->name('plugin.store');    //插入
             Route::get('/edit', 'PluginController@edit')->name('plugin.edit');        //编辑
             Route::post('/update', 'PluginController@update')->name('plugin.update'); //更新
             Route::get('/delete', 'PluginController@delete')->name('plugin.delete');  //删除
+
+            Route::get('/market', 'PluginController@market')->name('plugin.market');  //插件市场
             Route::post('/open', 'PluginController@open')->name('plugin.open');       //开通
         });
     });
