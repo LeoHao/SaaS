@@ -22,7 +22,7 @@ class RolesController extends Controller
         ->leftJoin('role_hierarchy', 'roles.id', '=', 'role_hierarchy.role_id')
         ->select('roles.*', 'role_hierarchy.hierarchy')
         ->orderBy('hierarchy', 'asc')
-        ->get();
+        ->paginate(20);
         return view('dashboard.roles.index', array(
             'roles' => $roles,
         ));

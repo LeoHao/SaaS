@@ -145,27 +145,33 @@
                         </thead>
                         <tbody>
                         @foreach($data as $item)
-                        <tr>
-                            <td class="sorting_1">{{ $item->name ?? '' }}</td>
-                            <td>{{ $item->mac ?? '' }}</td>
-                            <td>{{ $item->sn ?? '' }}</td>
-                            <td>{{ $item->company_id ?? ''  }}</td>
-                            <td><span class="badge badge-success">在线</span></td>
-                            <td>
-                                <a class="btn btn-primary btn-sm" href="{{ route('device.show', ['id' => $item['id']]) }}">查看</a>
-                                &nbsp;
-                                <a class="btn btn-primary btn-sm" href="{{ route('device.edit', ['id' => $item['id']]) }}">编辑</a>
-                                &nbsp;
-                                <a class="btn btn-danger btn-sm" href="{{ route('device.delete', ['id' => $item['id']]) }}">解绑</a>
-                            </td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <a class="btn btn-primary btn-sm" href="{{ route('device.special',['device_id'=> $item['id']]) }}">专线开通</a>
+                            <tr>
+                                <td class="sorting_1">{{ $item->name ?? '' }}</td>
+                                <td>{{ $item->mac ?? '' }}</td>
+                                <td>{{ $item->sn ?? '' }}</td>
+                                <td>{{ $item->company_id ?? ''  }}</td>
+                                <td><span class="badge badge-success">在线</span></td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="{{ route('device.show', ['id' => $item['id']]) }}">查看</a>
                                     &nbsp;
-                                    <a class="btn btn-primary btn-sm" href="{{ route('device.site-speed',['device_id'=> $item['id']]) }}">站点加速</a>
-                                </div>
-                            </td>
-                        </tr>
+                                    <a class="btn btn-primary btn-sm" href="{{ route('device.edit', ['id' => $item['id']]) }}">编辑</a>
+                                    &nbsp;
+                                    <a class="btn btn-danger btn-sm" href="{{ route('device.delete', ['id' => $item['id']]) }}">解绑</a>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        @if( in_array(1,array_column($item->companyPlugins->toArray(),'plugin_id')))
+                                            <a class="btn btn-primary btn-sm" href="{{ route('device.special',['device_id'=> $item['id']]) }}">专线开通</a>
+                                            &nbsp;
+                                        @endif
+
+                                        @if( in_array(2,array_column($item->companyPlugins->toArray(),'plugin_id')))
+                                            <a class="btn btn-primary btn-sm" href="{{ route('device.site-speed',['device_id'=> $item['id']]) }}">站点加速</a>
+                                            &nbsp;
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>
@@ -179,12 +185,29 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('js/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('js/custom/datatables.js') }}"></script>
-
     <script src="{{ asset('js/chartjs.bundle.js') }}"></script>
     <script src="{{ asset('js/utils.js') }}"></script>
     <script src="{{ asset('js/custom/device-chart.js') }}" defer></script>
+
+    <script src="{{ asset('js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+    <script>
+        $('.datatable').DataTable({
+            "bPaginate": false,
+            "bInfo": false,
+            "bFilter": false,
+            "bAutoWidth": false,
+            "aoColumns" : [
+                { sWidth: '10%' },
+                { sWidth: '20%' },
+                { sWidth: '20%' },
+                { sWidth: '10%' },
+                { sWidth: '10%' },
+                { sWidth: '10%' },
+                { sWidth: '20%' },
+            ]
+        });
+        $('.datatable').attr('style', 'border-collapse: collapse !important');
+    </script>
 
 @endsection

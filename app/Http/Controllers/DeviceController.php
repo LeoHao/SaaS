@@ -27,8 +27,7 @@ class DeviceController extends Controller
 //        $device = DB::table('saas.devices as sd')
 //            ->leftJoin('paas.devices as pd', 'sd.id', '=', 'pd.id')
 //            ->get();
-//        dd($device);
-        $data = Device::where('company_id', Auth::user()->company_id)->paginate(20);
+        $data = Device::where('company_id',2)->with(['companyPlugins'])->paginate(20);
         return view('device.index', [
             'data' => $data,
         ]);

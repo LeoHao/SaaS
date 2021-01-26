@@ -25,9 +25,9 @@
                                         <p panel-height> {{$item->description}}</p>
                                         <p class="lead float-right">
                                             <label class="c-switch c-switch-label c-switch-pill c-switch-success c-switch-lg">
-                                                <input class="c-switch-input" type="checkbox" id="status{{$item->id}}" {{ $item->companyPlugins->status == 1 ? 'checked' : ''}}>
+                                                <input class="c-switch-input" type="checkbox" id="status{{$item->id}}" value="{{$item->id}}" {{ (isset($item->companyPlugins->status) &&$item->companyPlugins->status == 1) ? 'checked' : ''}}>
                                                 <span class="c-switch-slider" data-checked="开通" data-unchecked="关闭"></span>
-                                                <input type="hidden" id='pluginId' value="{{$item->id}}">
+                                                <input type="hidden" id='pluginId{{$item->id}}' value="{{$item->id}}">
                                             </label>
                                         </p>
                                     </div>
@@ -45,6 +45,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('input:checkbox').change(function () {
+
+                var pluginId = $(this).val()
                 var status = 0
                 if ($(this).is(":checked")) {
                     status = 1;
@@ -56,7 +58,7 @@
                     type: 'POST',
                     url: '/plugin/open',
                     data: {
-                        id: $('#pluginId').val(),
+                        id: $('#pluginId'+pluginId).val(),
                         status: status,
                         '_token': '{{ csrf_token() }}',
                     }

@@ -25,7 +25,7 @@ class MenuElementController extends Controller
     public function index(Request $request){
         $menuInfo = Menus::select('menus.*')
             ->where('menus.menu_id', '=', 1)
-            ->orderBy('menus.sequence', 'asc')->get();
+            ->orderBy('menus.sequence', 'asc')->paginate(20);
 
         if($request->has('menu')){
             $menuId = $request->input('menu');

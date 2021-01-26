@@ -36,7 +36,7 @@ class PluginController extends Controller
 
     public function index(Request $request)
     {
-        $data = Plugin::with('companyPlugins')->get();
+        $data = Plugin::with('companyPlugins')->paginate(20);
         return view('plugin.index', [
             'data' => $data,
         ]);
@@ -92,7 +92,7 @@ class PluginController extends Controller
         $model->name = $request->input('name');
         $model->present = $request->input('present');
         $model->description = $request->input('description');
-        $model->status = 0;
+        $model->status = $request->input('status');;
         $model->save();
 
         $message = [
@@ -121,13 +121,11 @@ class PluginController extends Controller
 
     public function open(Request $request)
     {
-        $model = CompanyPlugin::updateOrCreate(['company_id' => Auth::user()->company_id, 'plugin_id' => $request->id], ['status' => $request->status ? 1 : 0]);
+        $model = CompanyPlugin::updateOrCreate(['company_id' => Auth::user()->company_id, 'plugin_id' => $request->input('id')], ['status' => $request->input('status')]);
         $response = [
             'id' => $model->id,
             'pid' => $request->id,
             'status' => $model->status,
-            'oldstatus' => $request->status,
-            'aaa' => $model->toArray(),
         ];
         return response()->json($response);
     }

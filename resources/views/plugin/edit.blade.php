@@ -42,6 +42,20 @@
                                     <input class="form-control" id="description" name="description" type="text" placeholder="" value="{{ $data->description }}" required>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="status">是否开启</label>
+                                    <div>
+                                        <div class="form-check form-check-inline mr-1">
+                                            <input class="form-check-input" id="status-radio1" type="radio" value="1" name="status" {{ $data->status == 1 ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="status-radio1">开启</label>
+                                        </div>
+                                        <div class="form-check form-check-inline mr-1">
+                                            <input class="form-check-input" id="status-radio2" type="radio" value="0" name="status" {{ $data->status == 0 ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="status-radio2">关闭</label>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="card-footer">
                                     <div class="row float-right">
                                         <a class="btn btn-primary" href="{{ route('plugin.index') }}">返回</a>
