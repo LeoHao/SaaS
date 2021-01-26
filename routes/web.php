@@ -18,13 +18,15 @@ Route::group(['middleware' => ['navigation', 'login']], function () {
 
 
     Route::resource('resource/{table}/resource', 'ResourceController')->names([
-        'index'   => 'resource.index', 'create' => 'resource.create', 'store' => 'resource.store', 'show' => 'resource.show', 'edit' => 'resource.edit', 'update' => 'resource.update',
+        'index'   => 'resource.index',
+        'create' => 'resource.create',
+        'store' => 'resource.store',
+        'show' => 'resource.show',
+        'edit' => 'resource.edit',
+        'update' => 'resource.update',
         'destroy' => 'resource.destroy',
     ]);
 
-    Route::group(['middleware' => ['role:user']], function () {
-
-    });
 
     Route::group(['middleware' => ['role:user']], function () {
         Route::resource('users', 'UsersController')->except(['create', 'store']);
@@ -34,6 +36,8 @@ Route::group(['middleware' => ['navigation', 'login']], function () {
         Route::post('mailSend/{id}', 'MailController@send')->name('mailSend');
         Route::get('/roles/move/move-up', 'RolesController@moveUp')->name('roles.up');
         Route::get('/roles/move/move-down', 'RolesController@moveDown')->name('roles.down');
+
+
         Route::prefix('menu/element')->group(function () {
             Route::get('/', 'MenuElementController@index')->name('menu.index');
             Route::get('/move-up', 'MenuElementController@moveUp')->name('menu.up');
@@ -46,6 +50,7 @@ Route::group(['middleware' => ['navigation', 'login']], function () {
             Route::get('/show', 'MenuElementController@show')->name('menu.show');
             Route::get('/delete', 'MenuElementController@delete')->name('menu.delete');
         });
+
         Route::prefix('menu/menu')->group(function () {
             Route::get('/', 'MenuController@index')->name('menu.menu.index');
             Route::get('/create', 'MenuController@create')->name('menu.menu.create');

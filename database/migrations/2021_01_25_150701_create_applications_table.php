@@ -22,6 +22,7 @@ class CreateApplicationsTable extends Migration
             $table->bigInteger('bandwidth_id')->default(0)->comment('带宽');
             $table->bigInteger('stauts')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

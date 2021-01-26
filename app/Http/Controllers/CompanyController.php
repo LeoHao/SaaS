@@ -20,8 +20,9 @@ class CompanyController extends Controller
 
     public function index(Request $request)
     {
+        $data = Company::paginate(1);
         return view('company.index', [
-            'data' => Company::all(),
+            'data' => $data,
         ]);
     }
 

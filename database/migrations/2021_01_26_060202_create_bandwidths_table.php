@@ -15,7 +15,10 @@ class CreateBandwidthsTable extends Migration
     {
         Schema::create('bandwidths', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('num')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -9,7 +9,7 @@ class ApplicationController extends Controller
 {
 
     public function index(){
-        $data = Application::with(['devices','companies','plugins'])->get();
+        $data = Application::with(['devices','companies','plugins'])->paginate(20);
         return view('application.index', [
             'data' => $data,
         ]);

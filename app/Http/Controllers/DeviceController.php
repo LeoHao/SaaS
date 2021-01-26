@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\Device;
-use App\Services\PaasService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +28,7 @@ class DeviceController extends Controller
 //            ->leftJoin('paas.devices as pd', 'sd.id', '=', 'pd.id')
 //            ->get();
 //        dd($device);
-        $data = Device::where('company_id', Auth::user()->company_id)->get();
+        $data = Device::where('company_id', Auth::user()->company_id)->paginate(20);
         return view('device.index', [
             'data' => $data,
         ]);
@@ -76,6 +75,29 @@ class DeviceController extends Controller
 
         $request->session()->flash('message', $message);
         return redirect()->route('device.create');
+    }
+
+    public function edit(Request $request)
+    {
+        $model = Device::where('id', '=', $request->input('id'))->first();
+        return view('device.edit', [
+            'data' => $model,
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $model = Device::where('id', '=', $request->input('id'))->first();
+        $model->name = $request->input('name');
+        $model->save();
+
+        $message = [
+            'type' => 'success',
+            'message' => '更新成功',
+        ];
+
+        $request->session()->flash('message', $message);
+        return redirect()->route('device.edit', ['id'=>$request->input('id')]);
     }
 
     public function special(Request $request){

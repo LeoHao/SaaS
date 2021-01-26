@@ -130,7 +130,7 @@
                     <a class="btn btn-lg btn-primary float-right" href="{{ route('company.create') }}">新增</a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped table-bordered datatable dataTable ">
+                    <table class="table table-responsive-sm table-striped dataTable">
                         <thead>
                         <tr>
                             <th>企业名</th>
@@ -138,22 +138,25 @@
                             <th>操作</th>
                         </tr>
                         </thead>
+
                         <tbody>
                         @foreach($data as $item)
-                            <tr role="row" class="odd">
-                                <td class="sorting_1">{{ $item->name }}</td>
+                            <tr>
+                                <td>{{ $item->name }}</td>
                                 <td>{{ $item->description }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('company.show', ['id' => $item['id']]) }}">查看</a>
-
                                     <a class="btn btn-primary" href="{{ route('company.edit', ['id' => $item['id']]) }}">编辑</a>
-
                                     <a class="btn btn-danger" href="{{ route('company.delete', ['id' => $item['id']]) }}">删除</a>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
+
+                    <div class="float-right">
+                        {{ $data->links()}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -163,13 +166,14 @@
 @section('javascript')
     <script src="{{ asset('js/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-
+    <script src="{{ asset('js/custom/datatables.js') }}"></script>
 
     <script src="{{ asset('js/chartjs.bundle.js') }}"></script>
     <script src="{{ asset('js/utils.js') }}"></script>
     <script src="{{ asset('js/chart.min.js') }}"></script>
-
-    <script src="{{ asset('js/custom/datatables.js') }}"></script>
     <script src="{{ asset('js/custom/device-chart.js') }}" defer></script>
+
+
+
 
 @endsection

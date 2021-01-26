@@ -15,7 +15,10 @@ class CreateDurationsTable extends Migration
     {
         Schema::create('durations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('num')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

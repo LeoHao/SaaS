@@ -3,7 +3,6 @@
 @section('content')
     <div class="container-fluid">
         <div class="fade-in">
-
             <div class="row">
                 @if(!empty($data))
                     @foreach($data as $item)
@@ -39,33 +38,35 @@
                 @endif
             </div>
         </div>
-        @endsection
-        @section('javascript')
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $('input:checkbox').change(function () {
-                        var status = 0
-                        if ($(this).is(":checked")) {
-                            status = 1;
-                        } else {
-                            status = 0;
-                        }
+    </div>
+@endsection
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/plugin/open',
-                            data: {
-                                id: $('#pluginId').val(),
-                                status: status,
-                                '_token': '{{ csrf_token() }}',
-                            }
-                        }).done(function (data) {
-                            // console.log(data)
-                            if (data.status == 0) {
-                                $(this).checked = false
-                            }
-                        });
-                    })
+@section('javascript')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input:checkbox').change(function () {
+                var status = 0
+                if ($(this).is(":checked")) {
+                    status = 1;
+                } else {
+                    status = 0;
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/plugin/open',
+                    data: {
+                        id: $('#pluginId').val(),
+                        status: status,
+                        '_token': '{{ csrf_token() }}',
+                    }
+                }).done(function (data) {
+                    // console.log(data)
+                    if (data.status == 0) {
+                        $(this).checked = false
+                    }
                 });
-            </script>
+            })
+        });
+    </script>
 @endsection

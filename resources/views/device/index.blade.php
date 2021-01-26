@@ -127,68 +127,50 @@
                 </div>
                 <!-- /.col-->
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="d-sm-inline">设备管理</h4>
-                    <a class="btn btn-lg btn-primary float-right" href="{{ route('device.create') }}">绑定设备</a>
-                </div>
-                <div class="card-body">
-                    <div class="dataTables_wrapper dt-bootstrap4 no-footer">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table class="table table-striped table-bordered datatable dataTable no-footer" >
-                                    <thead>
-                                    <tr>
-                                        <th>设备名</th>
-                                        <th>mac地址</th>
-                                        <th>SN</th>
-                                        <th>所属公司</th>
-                                        <th>状态</th>
-                                        <th>操作</th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($data as $item)
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1">{{ $item->name }}</td>
-                                            <td>{{ $item->mac }}</td>
-                                            <td>{{ $item->sn }}</td>
-                                            <td>{{ $item->company_id }}</td>
-                                            <td>
-                                                <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
-                                                    <button class="btn btn-pill btn-block btn-success">在线</button>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-primary" href="{{ route('device.show', ['id' => $item['id']]) }}">查看</a>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-primary" href="{{ route('device.edit', ['id' => $item['id']]) }}">编辑</a>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-danger" href="{{ route('device.delete', ['id' => $item['id']]) }}">解绑</a>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group" role="group">
-                                                    <a class="btn btn-danger" href="{{ route('device.special',['device_id'=> $item['id']]) }}">专线开通</a>
-                                                    <a class="btn btn-danger" href="{{ route('device.site-speed',['device_id'=> $item['id']]) }}">站点加速</a>
 
-                                                    {{--  <button class="btn btn-danger dropdown-toggle" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">专线开通</button>--}}
-{{--                                                    <div class="dropdown-menu" style="margin: 0px;">--}}
-{{--                                                        <a class="dropdown-item" href="{{ route('device.special-open', ['node_id' => $item['id'] ,'device_id'=> $item['id']]) }}">北京1</a>--}}
-{{--                                                        <a class="dropdown-item" href="{{ route('device.special-open', ['node_id' => $item['id'] ,'device_id'=> $item['id']]) }}">深圳1</a>--}}
-{{--                                                    </div>--}}
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+            <div class="card">
+                <div class="card-header"><i class="fa fa-align-justify"></i> 设备列表</div>
+                <div class="card-body">
+                    <table class="table table-responsive-sm table-striped dataTable">
+                        <thead>
+                        <tr>
+                            <th>设备名</th>
+                            <th>mac地址</th>
+                            <th>SN</th>
+                            <th>所属公司</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                            <th>功能开通</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($data as $item)
+                        <tr>
+                            <td class="sorting_1">{{ $item->name ?? '' }}</td>
+                            <td>{{ $item->mac ?? '' }}</td>
+                            <td>{{ $item->sn ?? '' }}</td>
+                            <td>{{ $item->company_id ?? ''  }}</td>
+                            <td><span class="badge badge-success">在线</span></td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="{{ route('device.show', ['id' => $item['id']]) }}">查看</a>
+                                &nbsp;
+                                <a class="btn btn-primary btn-sm" href="{{ route('device.edit', ['id' => $item['id']]) }}">编辑</a>
+                                &nbsp;
+                                <a class="btn btn-danger btn-sm" href="{{ route('device.delete', ['id' => $item['id']]) }}">解绑</a>
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-primary btn-sm" href="{{ route('device.special',['device_id'=> $item['id']]) }}">专线开通</a>
+                                    &nbsp;
+                                    <a class="btn btn-primary btn-sm" href="{{ route('device.site-speed',['device_id'=> $item['id']]) }}">站点加速</a>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <div class="float-right">
+                        {{ $data->links()}}
                     </div>
                 </div>
             </div>

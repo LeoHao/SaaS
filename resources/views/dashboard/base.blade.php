@@ -37,6 +37,7 @@
 
 @include('dashboard.shared.nav-builder')
 
+
 <div class="c-wrapper">
     @include('dashboard.shared.header')
     <div class="c-body">

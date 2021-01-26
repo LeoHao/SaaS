@@ -34,10 +34,11 @@ class CreateCompaniesTable extends Migration
 
         Schema::create('company_plugins', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('plugin_id');
             $table->bigInteger('company_id');
+            $table->bigInteger('plugin_id');
             $table->bigInteger('status')->comment('0:已过期(未开通|关闭) | 1:申请 | 2:通过');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
