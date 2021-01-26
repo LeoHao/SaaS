@@ -49,7 +49,7 @@
             @endforeach
         @endif
 
-        @include('dashboard.shared.sidebar')
+{{--        @include('dashboard.shared.sidebar')--}}
 
         <li class="c-sidebar-nav-title">账户信息</li>
         <li class="c-sidebar-nav-item px-3 c-d-compact-none c-d-minimized-none">
