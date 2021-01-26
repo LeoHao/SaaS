@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        <div class="card-header"><h4>Edit menu element</h4></div>
+                        <div class="card-header"><h4>编辑导航</h4></div>
                         <div class="card-body">
                             @if( Session::has('message') )
                                 <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
@@ -44,27 +44,18 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            User Roles
+                                            用户角色
                                         </th>
                                         <td>
                                             <table class="table">
                                                 @foreach($roles as $role)
                                                     <tr>
                                                         <td>
-                                                            <?php
-                                                            $temp = false;
-                                                            foreach ($menuroles as $menurole) {
-                                                                if ($role == $menurole->role_name) {
-                                                                    $temp = true;
-                                                                }
-                                                            }
-                                                            if ($temp === true) {
-                                                                echo '<input checked type="checkbox" name="role[]" value="'.$role.'" class="form-control"/>';
-                                                            } else {
-                                                                echo '<input type="checkbox" name="role[]" value="'.$role.'" class="form-control"/>';
-                                                            }
-                                                            ?>
-
+                                                            @if(in_array($role,array_column($menuroles->toArray(),'role_name')))
+                                                                <input checked type="checkbox" name="role[]" value="{{$role}}" class="form-control"/>
+                                                            @else
+                                                                <input type="checkbox" name="role[]" value="{{$role}}" class="form-control"/>
+                                                            @endif
                                                         </td>
                                                         <td>
                                                             {{ $role }}

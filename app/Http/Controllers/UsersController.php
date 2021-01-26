@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\Menulist;
+use App\Models\Menurole;
+use App\Models\Menus;
+use App\Services\RolesService;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -53,8 +58,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('dashboard.admin.userEditForm', compact('user'));
+        $user      = User::with(['company'])->find($id);
+        $companies = Company::all();
+        $roles     = RolesService::get();
+        $userRoles = explode(',',$user->menuroles);
+        return view('dashboard.admin.userEditForm', compact('user', 'companies','roles','userRoles'));
     }
 
     /**
@@ -71,8 +79,11 @@ class UsersController extends Controller
             'name' => 'required|min:1|max:256',
         ]);
 
-        $user       = User::find($id);
-        $user->name = $request->input('name');
+        $user             = User::find($id);
+        $user->name       = $request->input('name');
+        $user->email      = $request->input('email');
+        $user->company_id = $request->input('company_id');
+        $user->menuroles = implode(',',$request->input('role'));
         $user->save();
 
         $request->session()->flash('message', 'Successfully updated user');
