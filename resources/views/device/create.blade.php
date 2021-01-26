@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <form action="{{ route('device.store') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="company_id" value="{{ \Illuminate\Support\Facades\Auth::user()->cid }}">
+                                <input type="hidden" name="company_id" value="{{ \Illuminate\Support\Facades\Auth::user()->company_id }}">
                                 @if(Session::has('message'))
                                     <div class="alert alert-{{Session::get('message')['type']}}" role="alert">{{Session::get('message')['message']}}</div>
                                 @endif

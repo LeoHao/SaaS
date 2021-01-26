@@ -8,14 +8,16 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong>创建企业</strong>
+                            <strong>编辑企业</strong>
                             <small>Form</small>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('company.store') }}" method="POST">
+                            <form action="{{ route('company.update') }}" method="POST">
                                 @csrf
+
+                                <input type="hidden" name="id" value="{{ $data->id }}"/>
                                 @if(Session::has('message'))
-                                    <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
+                                    <div class="alert alert-{{Session::get('message')['type']}}" role="alert">{{Session::get('message')['message']}}</div>
                                 @endif
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -27,20 +29,20 @@
                                     </div>
                                 @endif
 
-                                <div class="form-group">
-                                    <label for="company">企业名称</label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="" required>
+                                <div class="form-group" method="POST">
+                                    <label for="name">名称</label>
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="" value="{{ $data->name }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="vat">企业描述</label>
-                                    <input class="form-control" id="description" name="description" type="text" placeholder="" required>
+                                    <label for="description">描述</label>
+                                    <input class="form-control" id="description" name="description" type="text" placeholder="" value="{{ $data->description }}" required>
                                 </div>
 
                                 <div class="card-footer">
                                     <div class="row float-right">
                                         <a class="btn btn-primary" href="{{ route('company.index') }}">返回</a>
-                                        &nbsp
-                                        <button class="btn btn-primary" type="submit"> 添加</button>
+                                        &nbsp;
+                                        <button class="btn btn-primary" type="submit"> 更新</button>
                                     </div>
                                 </div>
                             </form>
@@ -54,6 +56,4 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('js/axios.min.js') }}"></script>
-    <script src="{{ asset('js/menu-create.js') }}"></script>
 @endsection

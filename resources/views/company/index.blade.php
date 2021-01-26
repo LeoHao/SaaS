@@ -17,9 +17,8 @@
                                         <use xlink:href="assets/icons/free-symbol-defs.svg#cui-settings"></use>
                                     </svg>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item"
-                                                                                                                                                                                  href="#">Something
-                                        else here</a></div>
+                                <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div>
                             </div>
                             <div class="text-value-lg">9.823</div>
                             <div>子账户数量</div>
@@ -127,37 +126,29 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4 class="d-sm-inline">用户管理</h4>
-                    <a class="btn btn-lg btn-primary float-right" href="{{ route('device.create') }}">新增</a>
+                    <h4 class="d-sm-inline">企业管理</h4>
+                    <a class="btn btn-lg btn-primary float-right" href="{{ route('company.create') }}">新增</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped table-bordered datatable dataTable ">
                         <thead>
                         <tr>
-                            <th>Username</th>
-                            <th>Date registered</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>企业名</th>
+                            <th>描述</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($data as $item)
                             <tr role="row" class="odd">
                                 <td class="sorting_1">{{ $item->name }}</td>
-                                <td>{{ $item->mac }}</td>
-                                <td>{{ $item->sn }}</td>
-                                <td>
-                                    <span class="badge badge-success">Active</span>
-                                </td>
+                                <td>{{ $item->description }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('company.show', ['id' => $item['id']]) }}">查看</a>
-                                </td>
-                                <td>
+
                                     <a class="btn btn-primary" href="{{ route('company.edit', ['id' => $item['id']]) }}">编辑</a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-danger" href="{{ route('company.delete', ['id' => $item['id']]) }}">解绑</a>
+
+                                    <a class="btn btn-danger" href="{{ route('company.delete', ['id' => $item['id']]) }}">删除</a>
                                 </td>
                             </tr>
                         @endforeach

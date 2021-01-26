@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
-use App\Models\Menulist;
-use App\Models\Menus;
-use App\Models\Models\Device;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -22,64 +18,60 @@ class CompanyController extends Controller
         $this->middleware('admin');
     }
 
-    public function index(Request $request){
-        return view('company.index', array(
-            'data'  => Company::all()
-        ));
+    public function index(Request $request)
+    {
+        return view('company.index', [
+            'data' => Company::all(),
+        ]);
     }
 
-    public function create(){
-        return view('dashboard.editmenu.menu.create',[]);
+    public function create()
+    {
+        return view('company.create', []);
     }
 
-    public function store(Request $request){
-        $validatedData = $request->validate([
-                                                'name' => 'required|min:1|max:64'
-                                            ]);
-        $menulist = new Menulist();
-        $menulist->name = $request->input('name');
-        $menulist->save();
+    public function store(Request $request)
+    {
+        $validatedData  = $request->validate([
+            'name' => 'required|min:1|max:64',
+        ]);
+        $model       = new Company();
+        $model->name = $request->input('name');
+        $model->description = $request->input('description');
+        $model->save();
         $request->session()->flash('message', 'Successfully created menu');
-        return redirect()->route('menu.menu.create');
+        return redirect()->route('company.index');
     }
 
-    public function edit(Request $request){
-        return view('dashboard.editmenu.menu.edit',[
-            'menulist'  => Menulist::where('id', '=', $request->input('id'))->first()
+    public function edit(Request $request)
+    {
+        $model = Company::where('id', '=', $request->input('id'))->first();
+        return view('company.edit', [
+            'data' => $model,
         ]);
     }
 
-    public function update(Request $request){
-        $validatedData = $request->validate([
-                                                'id'   => 'required',
-                                                'name' => 'required|min:1|max:64'
-                                            ]);
-        $menulist = Menulist::where('id', '=', $request->input('id'))->first();
-        $menulist->name = $request->input('name');
-        $menulist->save();
-        $request->session()->flash('message', 'Successfully update menu');
-        return redirect()->route('menu.menu.edit', ['id'=>$request->input('id')]);
-    }
+    public function update(Request $request)
+    {
+        $model = Company::where('id', '=', $request->input('id'))->first();
+        $model->name = $request->input('name');
+        $model->description = $request->input('description');
+        $model->save();
 
-    /*
-    public function show(Request $request){
-        return view('dashboard.editmenu.menu.show',[
-            'menulist'  => Menulist::where('id', '=', $request->input('id'))->first()
-        ]);
+        $message = [
+            'type' => 'success',
+            'message' => '更新成功',
+        ];
+
+        $request->session()->flash('message', $message);
+        return redirect()->route('company.edit', ['id'=>$request->input('id')]);
     }
-    */
 
     public function delete(Request $request){
-        $menus = Menus::where('menu_id', '=', $request->input('id'))->first();
-        if(!empty($menus)){
-            $request->session()->flash('message', "Can't delete. This menu have assigned menu elements");
-            $request->session()->flash('back', 'menu.menu.index');
-            return view('dashboard.shared.universal-info');
-        }else{
-            Menulist::where('id', '=', $request->input('id'))->delete();
-            $request->session()->flash('message', 'Successfully deleted menu');
-            $request->session()->flash('back', 'menu.menu.index');
-            return view('dashboard.shared.universal-info');
-        }
+        $model = Company::where('id', '=', $request->input('id'))->first();
+        $model->delete();
+
+        return redirect()->route('company.index');
     }
+
 }

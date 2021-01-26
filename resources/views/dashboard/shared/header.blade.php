@@ -30,84 +30,63 @@
                 <span class="badge badge-pill badge-danger">5</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
-                <div class="dropdown-header bg-light"><strong>You have 5 notifications</strong></div>
+                <div class="dropdown-header bg-light"><strong>你有5条消息</strong></div>
                 <a class="dropdown-item" href="#">
                     <svg class="c-icon mfe-2 text-success">
                         <use xlink:href="{{ url('/icons/sprites/free.svg#cil-user-follow') }}"></use>
                     </svg>
-                    New user registered</a><a class="dropdown-item" href="#">
+                    加速服务剩余5天到期,请续费</a><a class="dropdown-item" href="#">
                     <svg class="c-icon mfe-2 text-danger">
                         <use xlink:href="{{ url('/icons/sprites/free.svg#cil-user-unfollow') }}"></use>
                     </svg>
-                    User deleted</a><a class="dropdown-item" href="#">
+                    专线服务剩余4天到期,请续费</a><a class="dropdown-item" href="#">
                     <svg class="c-icon mfe-2 text-info">
                         <use xlink:href="{{ url('/icons/sprites/free.svg#cil-chart') }}"></use>
                     </svg>
-                    Sales report is ready</a><a class="dropdown-item" href="#">
+                    加速服务剩余3天到期,请续费</a><a class="dropdown-item" href="#">
                     <svg class="c-icon mfe-2 text-success">
                         <use xlink:href="{{ url('/icons/sprites/free.svg#cil-basket') }}"></use>
                     </svg>
-                    New client</a><a class="dropdown-item" href="#">
+                    加速服务剩余2天到期,请续费</a>
+
+                <a class="dropdown-item" href="#">
                     <svg class="c-icon mfe-2 text-warning">
                         <use xlink:href="{{ url('/icons/sprites/free.svg#cil-speedometer') }}"></use>
                     </svg>
-                    Server overloaded</a>
-                <div class="dropdown-header bg-light"><strong>Server</strong></div>
-                <a class="dropdown-item d-block" href="#">
-                    <div class="text-uppercase mb-1"><small><b>CPU Usage</b></small></div>
-                    <span class="progress progress-xs">
-<div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-</span><small class="text-muted">348 Processes. 1/4 Cores.</small>
-                </a>
-                <a class="dropdown-item d-block" href="#">
-                    <div class="text-uppercase mb-1"><small><b>Memory Usage</b></small></div>
-                    <span class="progress progress-xs">
-<div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-</span><small class="text-muted">11444GB/16384MB</small>
-                </a>
-                <a class="dropdown-item d-block" href="#">
-                    <div class="text-uppercase mb-1"><small><b>SSD 1 Usage</b></small></div>
-                    <span class="progress progress-xs">
-<div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-</span><small class="text-muted">243GB/256GB</small>
+                    组网名额即将用完!
                 </a>
             </div>
         </li>
 
 
-        <li class="c-header-nav-item dropdown d-md-down-none mx-2 "><a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        <li class="c-header-nav-item dropdown d-md-down-none mx-2 ">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <svg class="c-icon">
                     <use xlink:href="{{ url('/icons/sprites/free.svg#cil-list-rich') }}"></use>
                 </svg>
-                <span class="badge badge-pill badge-warning">15</span></a>
+                <span class="badge badge-pill badge-warning">15</span>
+            </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0 ">
-                <div class="dropdown-header bg-light"><strong>You have 5 pending tasks</strong></div>
+                <div class="dropdown-header bg-light"><strong>查看使用情况</strong></div>
                 <a class="dropdown-item d-block" href="#">
-                    <div class="small mb-1">Upgrade NPM &amp; Bower<span class="float-right"><strong>0%</strong></span></div>
+                    <div class="small mb-1">专线剩余时间<span class="float-right"><strong>0%</strong></span></div>
                     <span class="progress progress-xs">
-<div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</span>
-                </a><a class="dropdown-item d-block" href="#">
-                    <div class="small mb-1">ReactJS Version<span class="float-right"><strong>25%</strong></span></div>
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </span>
+                </a>
+                <a class="dropdown-item d-block" href="#">
+                    <div class="small mb-1">站点加速剩余时间<span class="float-right"><strong>25%</strong></span></div>
                     <span class="progress progress-xs">
-<div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-</span>
-                </a><a class="dropdown-item d-block" href="#">
-                    <div class="small mb-1">VueJS Version<span class="float-right"><strong>50%</strong></span></div>
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </span>
+                </a>
+                <a class="dropdown-item d-block" href="#">
+                    <div class="small mb-1">组网名额<span class="float-right"><strong>50%</strong></span></div>
                     <span class="progress progress-xs">
-<div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-</span>
-                </a><a class="dropdown-item d-block" href="#">
-                    <div class="small mb-1">Add new layouts<span class="float-right"><strong>75%</strong></span></div>
-                    <span class="progress progress-xs">
-<div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-</span>
-                </a><a class="dropdown-item d-block" href="#">
-                    <div class="small mb-1">Angular 8 Version<span class="float-right"><strong>100%</strong></span></div>
-                    <span class="progress progress-xs">
-<div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-</span>
-                </a><a class="dropdown-item text-center border-top" href="#"><strong>View all tasks</strong></a>
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </span>
+                </a>
             </div>
         </li>
 
@@ -120,44 +99,40 @@
                 <span class="badge badge-pill badge-info">7</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
-                <div class="dropdown-header bg-light"><strong>You have 4 messages</strong></div>
+                <div class="dropdown-header bg-light"><strong>您有4条未读消息</strong></div>
                 <a class="dropdown-item" href="#">
                     <div class="message">
-                        <div class="py-3 mfe-3 float-left">
-                            <div class="c-avatar"><img class="c-avatar-img" src="{{ asset('assets/img/avatars/7.jpg') }}" alt="user@email.com"><span class="c-avatar-status bg-success"></span></div>
-                        </div>
-                        <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">Just now</small></div>
-                        <div class="text-truncate font-weight-bold"><span class="text-danger">!</span> Important message</div>
-                        <div class="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</div>
+                        <div><small class="text-muted">系统消息</small><small class="text-muted float-right mt-1">1天前</small></div>
+                        <div class="text-truncate font-weight-bold"><span class="text-danger">!</span> 加速服务即将到期</div>
+                        <div class="small text-muted text-truncate">您的加速服务器即将到期,避免服务暂停给您带来影响,清及时续费...</div>
                     </div>
-                </a><a class="dropdown-item" href="#">
+                </a>
+
+                <a class="dropdown-item" href="#">
                     <div class="message">
-                        <div class="py-3 mfe-3 float-left">
-                            <div class="c-avatar"><img class="c-avatar-img" src="{{ asset('assets/img/avatars/6.jpg') }}" alt="user@email.com"><span class="c-avatar-status bg-warning"></span></div>
-                        </div>
-                        <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">5 minutes ago</small></div>
-                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-                        <div class="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</div>
+                        <div><small class="text-muted">系统消息</small><small class="text-muted float-right mt-1">1天前</small></div>
+                        <div class="text-truncate font-weight-bold"><span class="text-danger">!</span> 加速服务即将到期</div>
+                        <div class="small text-muted text-truncate">您的加速服务器即将到期,避免服务暂停给您带来影响,清及时续费...</div>
                     </div>
-                </a><a class="dropdown-item" href="#">
+                </a>
+
+                <a class="dropdown-item" href="#">
                     <div class="message">
-                        <div class="py-3 mfe-3 float-left">
-                            <div class="c-avatar"><img class="c-avatar-img" src="{{ asset('assets/img/avatars/5.jpg') }}" alt="user@email.com"><span class="c-avatar-status bg-danger"></span></div>
-                        </div>
-                        <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">1:52 PM</small></div>
-                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-                        <div class="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</div>
+                        <div><small class="text-muted">系统消息</small><small class="text-muted float-right mt-1">1天前</small></div>
+                        <div class="text-truncate font-weight-bold"><span class="text-danger">!</span> 加速服务即将到期</div>
+                        <div class="small text-muted text-truncate">您的加速服务器即将到期,避免服务暂停给您带来影响,清及时续费...</div>
                     </div>
-                </a><a class="dropdown-item" href="#">
+                </a>
+
+                <a class="dropdown-item" href="#">
                     <div class="message">
-                        <div class="py-3 mfe-3 float-left">
-                            <div class="c-avatar"><img class="c-avatar-img" src="{{ asset('assets/img/avatars/4.jpg') }}" alt="user@email.com"><span class="c-avatar-status bg-info"></span></div>
-                        </div>
-                        <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">4:03 PM</small></div>
-                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-                        <div class="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</div>
+                        <div><small class="text-muted">系统消息</small><small class="text-muted float-right mt-1">1天前</small></div>
+                        <div class="text-truncate font-weight-bold"><span class="text-danger">!</span> 加速服务即将到期</div>
+                        <div class="small text-muted text-truncate">您的加速服务器即将到期,避免服务暂停给您带来影响,清及时续费...</div>
                     </div>
-                </a><a class="dropdown-item text-center border-top" href="#"><strong>View all messages</strong></a>
+                </a>
+
+                <a class="dropdown-item text-center border-top" href="#"><strong>查看所有消息</strong></a>
             </div>
         </li>
 
@@ -204,37 +179,25 @@
                     </svg>
                     Projects<span class="badge badge-primary ml-auto">42</span></a>
                 <div class="dropdown-divider"></div>
+
                 <a class="dropdown-item" href="#">
                     <svg class="c-icon mr-2">
                         <use xlink:href="{{ url('/icons/sprites/free.svg#cil-lock-locked') }}"></use>
                     </svg>
-                    Lock Account</a><a class="dropdown-item" href="#">
+                    Lock Account</a>
+                <a class="dropdown-item" href="#">
                     <svg class="c-icon mr-2">
                         <use xlink:href="{{ url('/icons/sprites/free.svg#cil-account-logout') }}"></use>
                     </svg>
-                    <form action="{{ url('/logout') }}" method="POST"> @csrf
-                        <button type="submit" class="btn btn-ghost-dark btn-block">Logout</button>
+                    <form action="{{ url('/logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-ghost-dark btn-block">退出</button>
                     </form>
                 </a>
             </div>
         </li>
 
         <button class="c-header-toggler c-class-toggler mfe-md-3" type="button" data-target="#aside" data-class="c-sidebar-show">
-            <svg class="c-icon c-icon-lg">
-                <use xlink:href="{{ url('/icons/sprites/free.svg#cil-applications-settings') }}"></use>
-            </svg>
         </button>
     </ul>
-    <div class="c-subheader px-3">
-        <ol class="breadcrumb border-0 m-0">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            @for($i = 1; $i <= count(Request::segments()); $i++)
-                @if($i < count(Request::segments()))
-                    <li class="breadcrumb-item">{{ Request::segment($i) }}</li>
-                @else
-                    <li class="breadcrumb-item active">{{ Request::segment($i) }}</li>
-                @endif
-            @endfor
-        </ol>
-    </div>
 </header>

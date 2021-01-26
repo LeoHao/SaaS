@@ -14,7 +14,7 @@
                             <div class="btn-group float-right">
                                 <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg class="c-icon">
-                                        <use xlink:href="assets/icons/free-symbol-defs.svg#cui-settings"></use>
+                                        <use xlink:href="{{ url('/icons/sprites/free.svg#cui-settings')}}"></use>
                                     </svg>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a>
@@ -42,7 +42,7 @@
                         <div class="card-body pb-0">
                             <button class="btn btn-transparent p-0 float-right" type="button">
                                 <svg class="c-icon">
-                                    <use xlink:href="assets/icons/free-symbol-defs.svg#cui-location-pin"></use>
+                                    <use xlink:href="{{ url('/icons/sprites/free.svg#cui-location-pin')}}"></use>
                                 </svg>
                             </button>
                             <div class="text-value-lg">9.823</div>
@@ -68,12 +68,14 @@
                             <div class="btn-group float-right">
                                 <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg class="c-icon">
-                                        <use xlink:href="assets/icons/free-symbol-defs.svg#cui-settings"></use>
+                                        <use xlink:href="{{ url('/icons/sprites/free.svg#cui-settings')}}"></use>
                                     </svg>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item"
-                                                                                                                                                                                  href="#">Something
-                                        else here</a></div>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
                             </div>
                             <div class="text-value-lg">9.823</div>
                             <div>在线用户</div>
@@ -98,12 +100,14 @@
                             <div class="btn-group float-right">
                                 <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg class="c-icon">
-                                        <use xlink:href="assets/icons/free-symbol-defs.svg#cui-settings"></use>
+                                        <use xlink:href="{{ url('/icons/sprites/free.svg#cui-settings')}}"></use>
                                     </svg>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item"
-                                                                                                                                                                                  href="#">Something
-                                        else here</a></div>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
                             </div>
                             <div class="text-value-lg">9.823</div>
                             <div>在线用户</div>
@@ -123,7 +127,6 @@
                 </div>
                 <!-- /.col-->
             </div>
-
             <div class="card">
                 <div class="card-header">
                     <h4 class="d-sm-inline">设备管理</h4>
@@ -170,11 +173,14 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group">
-                                                    <button class="btn btn-danger dropdown-toggle" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">专线开通</button>
-                                                    <div class="dropdown-menu" style="margin: 0px;">
-                                                        <a class="dropdown-item" href="{{ route('device.special-open', ['node_id' => $item['id'] ,'device_id'=> $item['id']]) }}">北京1</a>
-                                                        <a class="dropdown-item" href="{{ route('device.special-open', ['node_id' => $item['id'] ,'device_id'=> $item['id']]) }}">深圳1</a>
-                                                    </div>
+                                                    <a class="btn btn-danger" href="{{ route('device.special',['device_id'=> $item['id']]) }}">专线开通</a>
+                                                    <a class="btn btn-danger" href="{{ route('device.site-speed',['device_id'=> $item['id']]) }}">站点加速</a>
+
+                                                    {{--  <button class="btn btn-danger dropdown-toggle" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">专线开通</button>--}}
+{{--                                                    <div class="dropdown-menu" style="margin: 0px;">--}}
+{{--                                                        <a class="dropdown-item" href="{{ route('device.special-open', ['node_id' => $item['id'] ,'device_id'=> $item['id']]) }}">北京1</a>--}}
+{{--                                                        <a class="dropdown-item" href="{{ route('device.special-open', ['node_id' => $item['id'] ,'device_id'=> $item['id']]) }}">深圳1</a>--}}
+{{--                                                    </div>--}}
                                                 </div>
                                             </td>
                                         </tr>

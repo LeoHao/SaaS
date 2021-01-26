@@ -59,9 +59,9 @@
                                                                 }
                                                             }
                                                             if ($temp === true) {
-                                                                echo '<input checked type="checkbox" name="role[]" value="' . $role . '" class="form-control"/>';
+                                                                echo '<input checked type="checkbox" name="role[]" value="'.$role.'" class="form-control"/>';
                                                             } else {
-                                                                echo '<input type="checkbox" name="role[]" value="' . $role . '" class="form-control"/>';
+                                                                echo '<input type="checkbox" name="role[]" value="'.$role.'" class="form-control"/>';
                                                             }
                                                             ?>
 
@@ -80,11 +80,11 @@
                                         </th>
                                         <td>
                                             <input
-                                                type="text"
-                                                class="form-control"
-                                                name="name"
-                                                value="{{ $menuElement->name }}"
-                                                placeholder="Name"
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="name"
+                                                    value="{{ $menuElement->name }}"
+                                                    placeholder="Name"
                                             />
                                         </td>
                                     </tr>
@@ -119,13 +119,7 @@
                                         <td>
                                             <div id="div-href">
                                                 Href:
-                                                <input
-                                                    type="text"
-                                                    name="href"
-                                                    class="form-control"
-                                                    placeholder="href"
-                                                    value="{{ $menuElement->href }}"
-                                                />
+                                                <input type="text" name="href" class="form-control" placeholder="href" value="{{ $menuElement->href }}"/>
                                             </div>
                                             <br><br>
                                             <div id="div-dropdown-parent">
@@ -138,20 +132,11 @@
                                             <br><br>
                                             <div id="div-icon">
                                                 Icon - Find icon class in:
-                                                <a
-                                                    href="https://coreui.io/docs/icons/icons-list/#coreui-icons-free-502-icons"
-                                                    target="_blank"
-                                                >
+                                                <a href="https://coreui.io/docs/icons/icons-list/#coreui-icons-free-502-icons" target="_blank">
                                                     CoreUI icons documentation
                                                 </a>
                                                 <br>
-                                                <input
-                                                    class="form-control"
-                                                    name="icon"
-                                                    type="text"
-                                                    placeholder="CoreUI Icon class - example: cil-bell"
-                                                    value="{{ $menuElement->icon }}"
-                                                >
+                                                <input class="form-control" name="icon" type="text" placeholder="CoreUI Icon class - example: cil-bell" value="{{ $menuElement->icon }}">
                                             </div>
                                         </td>
                                     </tr>

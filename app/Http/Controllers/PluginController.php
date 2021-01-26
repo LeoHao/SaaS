@@ -121,7 +121,7 @@ class PluginController extends Controller
 
     public function open(Request $request)
     {
-        $model = CompanyPlugin::updateOrCreate(['company_id' => Auth::user()->cid, 'plugin_id' => $request->id], ['status' => $request->status ? 1 : 0]);
+        $model = CompanyPlugin::updateOrCreate(['company_id' => Auth::user()->company_id, 'plugin_id' => $request->id], ['status' => $request->status ? 1 : 0]);
         $response = [
             'id' => $model->id,
             'pid' => $request->id,

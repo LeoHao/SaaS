@@ -1,7 +1,7 @@
 <?php
 return [
     'ip'        => '175.25.22.29',
-    'port'      => '6001',
+    'port'      => '7250',
     'key'       => crc32('1234567890'),
     'auth_name' => 'SaaS',
     'type'      => [

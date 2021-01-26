@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Device;
 use App\Services\PaasService;
 use Illuminate\Http\Request;
@@ -23,6 +24,11 @@ class DeviceController extends Controller
 
     public function index(Request $request)
     {
+
+//        $device = DB::table('saas.devices as sd')
+//            ->leftJoin('paas.devices as pd', 'sd.id', '=', 'pd.id')
+//            ->get();
+//        dd($device);
         $data = Device::where('company_id', Auth::user()->company_id)->get();
         return view('device.index', [
             'data' => $data,
@@ -72,14 +78,62 @@ class DeviceController extends Controller
         return redirect()->route('device.create');
     }
 
+    public function special(Request $request){
+        $device_model = Device::find($request->input('device_id'));
+        $location_model = [];
+        $destination_model = [];
+
+        return view('device.special',[
+            'device' => $device_model,
+            'location' => $location_model,
+            'destination' => $destination_model,
+        ]);
+    }
 
     public function specialOpen(Request $request){
-        $paas = new PaasService();
-        $node_model = [];
+//        $location = Device::find($request->input('location'));
+//        $destination = Device::find($request->input('destination'));
 
-        $mac = [];
-        $extParams = [];
-        $extParams['node'] = $node_model;
-        $paas->send('plugins_network_special_open',$mac,$extParams);
+        $model = new Application;
+        $model->company_id = Auth::user()->company_id;
+        $model->device_id = $request->input('device_id');
+        $model->duration_id = $request->input('duration');//时长
+        $model->bandwidth_id = $request->input('bandwidth');//带宽
+        $model->plugin_id = $request->input('plugin_id');//插件
+        $model->save();
+
+
+        return redirect()->route('device.index');
+    }
+
+    public function siteSpeed(Request $request){
+        $device_model = Device::find($request->input('device_id'));
+        $location_model = [];
+        $destination_model = [];
+
+        return view('device.site-speed',[
+            'device' => $device_model,
+            'location' => $location_model,
+            'destination' => $destination_model,
+        ]);
+    }
+
+    public function siteSpeedOpen(Request $request){
+        $model = new Application;
+        $model->company_id = $request->input('company_id');
+        $model->device_id = $request->input('device_id');
+        $model->duration_id = $request->input('duration');//时长
+
+        $model->location = $request->input('site_id');
+        $model->destination = $request->input('site_id');
+        $model->bandwidth_id = $request->input('bandwidth');
+
+        $site_id = Device::find($request->input('site_id'));
+        $location = Device::find($request->input('location'));
+        $destination = Device::find($request->input('destination'));
+        $bandwidth = Device::find($request->input('bandwidth'));
+        $time = Device::find($request->input('time'));
+
+        return redirect()->route('device.index');
     }
 }
