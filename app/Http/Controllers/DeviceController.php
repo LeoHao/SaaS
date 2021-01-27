@@ -141,20 +141,18 @@ class DeviceController extends Controller
 
     public function siteSpeedOpen(Request $request){
         $model = new Application;
-        $model->company_id = $request->input('company_id');
+        $model->company_id = Auth::user()->company_id;
         $model->device_id = $request->input('device_id');
         $model->duration_id = $request->input('duration');//时长
+        $model->plugin_id = $request->input('plugin_id');//插件
+        $model->bandwidth_id = 0;//带宽
+        $model->save();
 
-        $model->location = $request->input('site_id');
-        $model->destination = $request->input('site_id');
-        $model->bandwidth_id = $request->input('bandwidth');
+        $message = [
+            'type' => 'success',
+            'message' => '审核中',
+        ];
 
-        $site_id = Device::find($request->input('site_id'));
-        $location = Device::find($request->input('location'));
-        $destination = Device::find($request->input('destination'));
-        $bandwidth = Device::find($request->input('bandwidth'));
-        $time = Device::find($request->input('time'));
-
-        return redirect()->route('device.index');
+        return $message;
     }
 }

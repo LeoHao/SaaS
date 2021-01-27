@@ -20,7 +20,7 @@ class CreateApplicationsTable extends Migration
             $table->bigInteger('plugin_id')->comment('插件');
             $table->bigInteger('duration_id')->comment('时长');
             $table->bigInteger('bandwidth_id')->default(0)->comment('带宽');
-            $table->bigInteger('stauts')->default(0);
+            $table->bigInteger('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

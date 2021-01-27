@@ -9,7 +9,7 @@ class ApplicationController extends Controller
 {
 
     public function index(){
-        $data = Application::with(['devices','companies','plugins'])->paginate(20);
+        $data = Application::with(['device','company','plugin','duration','bandwidth'])->paginate(20);
         return view('application.index', [
             'data' => $data,
         ]);
@@ -17,7 +17,7 @@ class ApplicationController extends Controller
 
     public function passed(Request $request){
         $model = Application::find($request->input('id'));
-        $model->stauts = 1;
+        $model->status = 1;
         $model->save();
 
         return redirect()->route('application.index');
@@ -25,7 +25,7 @@ class ApplicationController extends Controller
 
     public function rejected(Request $request){
         $model = Application::find($request->input('id'));
-        $model->stauts = -1;
+        $model->status = -1;
         $model->save();
 
         return redirect()->route('application.index');

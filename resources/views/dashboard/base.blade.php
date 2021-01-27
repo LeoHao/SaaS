@@ -44,8 +44,8 @@
         <main class="c-main">
             @yield('content')
         </main>
-        @include('dashboard.shared.footer')
     </div>
+    @include('dashboard.shared.footer')
 </div>
 
 <script src="{{ asset('js/jquery.min.js') }}"></script>

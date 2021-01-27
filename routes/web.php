@@ -74,7 +74,7 @@ Route::group(['middleware' => ['navigation', 'login']], function () {
             Route::post('/special-open', 'DeviceController@specialOpen')->name('device.special-open'); //专网开通
 
             Route::get('/site-speed', 'DeviceController@siteSpeed')->name('device.site-speed'); //站点加速
-            Route::get('/site-speed-open', 'DeviceController@siteSpeedOpen')->name('device.site-speed-open'); //站点加速
+            Route::post('/site-speed-open', 'DeviceController@siteSpeedOpen')->name('device.site-speed-open'); //站点加速
         });
 
         //公司

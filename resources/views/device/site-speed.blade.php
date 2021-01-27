@@ -7,71 +7,159 @@
 @section('content')
     <div class="container-fluid">
         <div class="fade-in">
-            <div class="row">
 
-                <div class="col-md-12">
+            <div class="row m-auto">
+                <div class="col-lg-2">
                     <div class="card">
-                        <form class="form-horizontal" action="{{ route('device.special-open') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="device_id" value="{{ $device->id }}"/>
-
-                            <div class="card-header"><strong>站点加速</strong></div>
-                            <div class="card-body">
-                                <div class="form-group row alert alert-dark">
-                                    <label class="col-md-3 col-form-label">站点</label>
-                                    <p>
-                                        <a href="{{ route('device.site-speed-open',['site_id'=>1]) }}" class="btn btn-danger" type="button">
-                                            <svg class="c-icon">
-                                                <use xlink:href="{{ url('/icons/sprites/brand.svg#cib-facebook-f') }}"></use>
-                                            </svg>
-                                        </a>
-
-                                        <a href="{{ route('device.site-speed-open',['site_id'=>2]) }}" class="btn btn-danger" type="button">
-                                            <svg class="c-icon">
-                                                <use xlink:href="{{ url('/icons/sprites/brand.svg#cib-twitter') }}"></use>
-                                            </svg>
-                                        </a>
-
-                                        <a href="{{ route('device.site-speed-open',['site_id'=>3]) }}" class="btn btn-danger" type="button">
-                                            <svg class="c-icon">
-                                                <use xlink:href="{{ url('/icons/sprites/brand.svg#cib-twitter') }}"></use>
-                                            </svg>
-                                        </a>
-
-                                        <a href="{{ route('device.site-speed-open',['site_id'=>4]) }}" class="btn btn-success" type="button">
-                                            <svg class="c-icon">
-                                                <use xlink:href="{{ url('/icons/sprites/brand.svg#cib-twitter') }}"></use>
-                                            </svg>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="float-right">
-                                    <button class="btn btn-sm btn-danger" type="reset"> 返回</button>
-                                    <button class="btn btn-sm btn-primary" type="submit"> 确认</button>
-                                </div>
-
-                            </div>
-                        </form>
+                        <div class="card-header bg-facebook content-center border" id="1">
+                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
+                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#facebook-f') }}"></use>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <!-- /.col-->
+                <div class="col-sm-6 col-lg-2">
+                    <div class="card">
+                        <div class="card-header bg-twitter content-center border" id="2">
+                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
+                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#twitter') }}"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-->
+                <div class="col-sm-6 col-lg-2">
+                    <div class="card">
+                        <div class="card-header bg-linkedin content-center border" id="3">
+                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
+                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#linkedin') }}"></use>
+                            </svg>
 
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-->
+                <div class="col-sm-6 col-lg-2">
+                    <div class="card">
+                        <div class="card-header bg-github content-center border" id="4">
+                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
+                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#github') }}"></use>
+                            </svg>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-->
+
+                <div class="col-sm-6 col-lg-2">
+                    <div class="card">
+                        <div class="card-header bg-stack-overflow content-center border" id="5">
+                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
+                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#stack-overflow') }}"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-->
+
+                <div class="col-sm-6 col-lg-2">
+                    <div class="card">
+                        <div class="card-header bg-youtube content-center border" id="6">
+                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
+                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#youtube') }}"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-->
+            </div>
+            <br>
+
+            <div class="row align-items-center">
+                <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+                    <button class="btn btn-block btn-outline-success duration" type="button" value="1">1个月</button>
+                </div>
+                <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+                    <button class="btn btn-block btn-outline-success duration" type="button" value="2">2个月</button>
+                </div>
+                <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+                    <button class="btn btn-block btn-outline-success duration" type="button" value="3">3个月</button>
+                </div>
+
+                <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+                    <button class="btn btn-block btn-outline-success duration" type="button" value="4">4个月</button>
+                </div>
+
+                <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+                    <button class="btn btn-block btn-outline-success duration" type="button" value="5">5个月</button>
+                </div>
+            </div>
+            <br>
+
+            <div class="col text-center">
+                <button class="btn btn-success col-3" type="button" id="speed">
+                    <svg class="c-icon">
+                        <use xlink:href="{{ asset('/icons/sprites/brand.svg#cib-mediafire') }}"></use>
+                    </svg>
+                    加速
+                </button>
+            </div>
         </div>
-    </div>
     </div>
 @endsection
 
 @section('javascript')
     <script>
-        var options = [{value: 0, text: 'enhancement'}, {value: 1, text: 'bug'}, {value: 2, text: 'duplicate'}, {value: 3, text: 'invalid'}, {
-            label: 'group',
-            options: [{value: 4, text: 'enhancement2'}, {value: 5, text: 'bug2'}]
-        }];
+        $(document).ready(function () {
+            var id
+            var duration
+            $(".border").click(function () {
+                $(".border").removeClass('border-success');
+                $(this).addClass("border-success");
+                $(".select-checked").removeClass('text-success');
+                $(this).children('svg').addClass("text-success");
+                id = $(this).attr('id')
+            })
 
-        var select14 = document.getElementById('select-14');
-        var select14c = new coreui.MultiSelect(select14, {inline: true, multiple: true, search: true, selectionType: 'tags', searchPlaceholder: 'Search'});
+            $(".duration").click(function () {
+                $(".duration").removeClass('btn-success');
+                $(".duration").addClass('btn-outline-success');
+                $(this).removeClass("btn-outline-success");
+                $(this).addClass("btn-success");
 
+                duration = $(this).val()
+            })
+
+
+            $('#speed').click(function () {
+                if (!id) {
+                    alert('请选择站点')
+                    return;
+                }
+
+                if (!duration) {
+                    alert('请选择时长')
+                    return;
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('device.site-speed-open') }}',
+                    data: {
+                        id: id,
+                        device_id: '{{ $device->id }}',
+                        duration: duration,
+                        plugin_id: 2,
+                        '_token': '{{ csrf_token() }}',
+                    }
+                }).done(function (data) {
+                    alert(data.message)
+                    if (data.type == 'success') {
+                        window.location.replace("{{route('device.index')}}");
+                    }
+                });
+            })
+        })
     </script>
 @endsection
