@@ -17,8 +17,9 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        //如果认证过重定向到首页
         if (Auth::guard($guard)->check()) {
-            return redirect('/login');
+            return redirect('/');
         }
 
         return $next($request);
