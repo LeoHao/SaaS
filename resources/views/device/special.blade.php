@@ -38,14 +38,6 @@
                                             <label class="form-check-label" for="destination-{{$d->id}}">{{$d->name}}</label>
                                         </div>
                                         @endforeach
-                                        <div class="form-check form-check-inline mr-1">
-                                            <input class="form-check-input" id="destination-radio2" type="radio" value="2" name="destination">
-                                            <label class="form-check-label" for="destination-radio2">日本</label>
-                                        </div>
-                                        <div class="form-check form-check-inline mr-1">
-                                            <input class="form-check-input" id="destination-radio3" type="radio" value="3" name="destination">
-                                            <label class="form-check-label" for="destination-radio3">韩国</label>
-                                        </div>
                                     </div>
                                 </div>
 
