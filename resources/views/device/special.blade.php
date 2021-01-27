@@ -8,7 +8,6 @@
     <div class="container-fluid">
         <div class="fade-in">
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card">
                         <form class="form-horizontal" action="{{ route('device.special-open') }}" method="POST">
@@ -21,28 +20,24 @@
                                 <div class="form-group row alert alert-dark">
                                     <label class="col-md-3 col-form-label">所在地</label>
                                     <div class="col-md-9 col-form-label">
+                                        @foreach($location as $l)
                                         <div class="form-check form-check-inline mr-1">
-                                            <input class="form-check-input" id="location-radio1" type="radio" value="1" name="location">
-                                            <label class="form-check-label" for="location-radio1">北京</label>
+                                            <input class="form-check-input" id="location-{{$l->id}}" type="radio" value="{{$l->id}}" name="location">
+                                            <label class="form-check-label" for="location-{{$l->id}}">{{$l->name}}</label>
                                         </div>
-                                        <div class="form-check form-check-inline mr-1">
-                                            <input class="form-check-input" id="location-radio2" type="radio" value="2" name="location">
-                                            <label class="form-check-label" for="location-radio2">上海</label>
-                                        </div>
-                                        <div class="form-check form-check-inline mr-1">
-                                            <input class="form-check-input" id="location-radio3" type="radio" value="3" name="location">
-                                            <label class="form-check-label" for="location-radio3">深圳</label>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
 
                                 <div class="form-group row alert alert-dark">
                                     <label class="col-md-3 col-form-label">目的地</label>
                                     <div class="col-md-9 col-form-label">
+                                         @foreach($destination as $d)
                                         <div class="form-check form-check-inline mr-1">
-                                            <input class="form-check-input" id="destination-radio1" type="radio" value="1" name="destination">
-                                            <label class="form-check-label" for="destination-radio1">美国</label>
+                                            <input class="form-check-input" id="destination-{{$d->id}}" type="radio" value="{{$d->id}}" name="destination">
+                                            <label class="form-check-label" for="destination-{{$d->id}}">{{$d->name}}</label>
                                         </div>
+                                        @endforeach
                                         <div class="form-check form-check-inline mr-1">
                                             <input class="form-check-input" id="destination-radio2" type="radio" value="2" name="destination">
                                             <label class="form-check-label" for="destination-radio2">日本</label>

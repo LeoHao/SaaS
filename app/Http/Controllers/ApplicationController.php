@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Device;
+use App\Services\PaasService;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -16,10 +18,14 @@ class ApplicationController extends Controller
     }
 
     public function passed(Request $request){
-        $model = Application::find($request->input('id'));
+        $model = Application::with('bandwidth')->find($request->input('id'));
         $model->status = 1;
         $model->save();
 
+        $device = Device::find($model->device_id)->toArray();
+
+        $push = new PaasService();
+        $push->send('plugins_network_special_open',$device,$model->toArray());
         return redirect()->route('application.index');
     }
 

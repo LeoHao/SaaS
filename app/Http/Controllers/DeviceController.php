@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Dest;
 use App\Models\Device;
+use App\Models\Node;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -101,8 +103,8 @@ class DeviceController extends Controller
 
     public function special(Request $request){
         $device_model = Device::find($request->input('device_id'));
-        $location_model = [];
-        $destination_model = [];
+        $location_model = Node::all();
+        $destination_model = Dest::all();
 
         return view('device.special',[
             'device' => $device_model,
