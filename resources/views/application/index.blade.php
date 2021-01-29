@@ -22,6 +22,8 @@
                             <th>插件类型</th>
                             <th>开通时长</th>
                             <th>带宽</th>
+                            <th>所在地</th>
+                            <th>目的地</th>
                             <th>状态</th>
                             <th>操作</th>
                         </tr>
@@ -36,6 +38,8 @@
                                 <td>{{ $item->plugin->name ?? ''  }}</td>
                                 <td>{{ $item->duration->name ?? ''  }}</td>
                                 <td>{{ $item->bandwidth->name ?? ''  }}</td>
+                                <td>{{ $item->dest->name ?? ''  }}</td>
+                                <td>{{ $item->node->name ?? ''  }}</td>
                                 <td>
                                     <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
                                         <span class="badge badge-{{ $item->status ? 'success' : 'danger'}}">{{ $item->status ? '已通过' : '失败'}}</span>

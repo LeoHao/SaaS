@@ -43,12 +43,12 @@ class PaasService
             'CpeMac' => $device['mac'],
             'SecretKey' => crc32($action.'this is saas sncode'),
             'ActionExt' => [
-                'node_id'=>1,
-                'dest_id'=>7,
+                'node_id'=>$params['node']['id'],
+                'dest_id'=>$params['dest']['id'],
                 'bw'=>$params['bandwidth']['num'],
             ],
         ];
-
+        dd($data);
         $client = self::connect();
 
         $client->send(json_encode($data));

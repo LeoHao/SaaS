@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
+  <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
         <div class="fade-in">
             <div class="row">
                 <div class="col-sm-12">
@@ -15,21 +15,21 @@
                             <form action="{{ route('plugin.update') }}" method="POST">
                                 @csrf
 
-                                <input type="hidden" name="id" value="{{ $data->id }}"/>
-                                @if(Session::has('message'))
-                                    <div class="alert alert-{{Session::get('message')['type']}}" role="alert">{{Session::get('message')['message']}}</div>
-                                @endif
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
+                              <input type="hidden" name="id" value="{{ $data->id }}" />
+                              @if(Session::has('message'))
+                                <div class="alert alert-{{Session::get('message')['type']}}" role="alert">{{Session::get('message')['message']}}</div>
+                              @endif
+                              @if ($errors->any())
+                                <div class="alert alert-danger">
                                         <ul>
                                             @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
+                                            <li>{{ $error }}</li>
+                                          @endforeach
                                         </ul>
                                     </div>
-                                @endif
+                              @endif
 
-                                <div class="form-group" method="POST">
+                              <div class="form-group" method="POST">
                                     <label for="name">名称</label>
                                     <input class="form-control" id="name" name="name" type="text" placeholder="" value="{{ $data->name }}" required>
                                 </div>

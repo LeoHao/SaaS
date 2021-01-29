@@ -8,7 +8,7 @@ class CheckForMaintenanceMode extends Middleware
 {
     /**
      * The URIs that should be reachable while maintenance mode is enabled.
-     *
+     * 启用维护模式时应可到达的URI
      * @var array
      */
     protected $except = [

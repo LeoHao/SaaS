@@ -20,10 +20,10 @@
                                 <div class="form-group row alert alert-dark">
                                     <label class="col-md-3 col-form-label">所在地</label>
                                     <div class="col-md-9 col-form-label">
-                                        @foreach($location as $l)
+                                        @foreach($nodes as $node)
                                         <div class="form-check form-check-inline mr-1">
-                                            <input class="form-check-input" id="location-{{$l->id}}" type="radio" value="{{$l->id}}" name="location">
-                                            <label class="form-check-label" for="location-{{$l->id}}">{{$l->name}}</label>
+                                            <input class="form-check-input" id="location-{{$node->id}}" type="radio" value="{{$node->id}}" name="node_id">
+                                            <label class="form-check-label" for="location-{{$node->id}}">{{$node->name}}</label>
                                         </div>
                                         @endforeach
                                     </div>
@@ -32,10 +32,10 @@
                                 <div class="form-group row alert alert-dark">
                                     <label class="col-md-3 col-form-label">目的地</label>
                                     <div class="col-md-9 col-form-label">
-                                         @foreach($destination as $d)
+                                         @foreach($dests as $dest)
                                         <div class="form-check form-check-inline mr-1">
-                                            <input class="form-check-input" id="destination-{{$d->id}}" type="radio" value="{{$d->id}}" name="destination">
-                                            <label class="form-check-label" for="destination-{{$d->id}}">{{$d->name}}</label>
+                                            <input class="form-check-input" id="destination-{{$dest->id}}" type="radio" value="{{$dest->id}}" name="dest_id">
+                                            <label class="form-check-label" for="destination-{{$dest->id}}">{{$dest->name}}</label>
                                         </div>
                                         @endforeach
                                     </div>
