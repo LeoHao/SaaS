@@ -58,9 +58,9 @@
                             <label for="checkbox-fill-a1" class="cr"> Save credentials</label>
                         </div>
                     </div>
-                    <button class="btn btn-primary shadow-2 mb-4" type="submit">Login</button>
+                    <button class="btn btn-primary shadow-2 mb-4" type="submit">登录</button>
 {{--                    {{ route('password.request') }--}}
-                    <p class="mb-2 text-muted">Forgot password? <a href="{{ route('password.request') }}">Reset</a></p>
+{{--                    <p class="mb-2 text-muted">Forgot password? <a href="{{ route('password.request') }}">Reset</a></p>--}}
 {{--                    <p class="mb-0 text-muted">Don’t have an account? <a href="auth-signup.html">Signup</a></p>--}}
                   </form>
                 </div>

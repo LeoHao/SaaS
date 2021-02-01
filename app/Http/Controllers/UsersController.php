@@ -30,7 +30,7 @@ class UsersController extends Controller
     {
         $you   = auth()->user();
         $users = User::paginate(20);
-        return view('dashboard.admin.usersList', compact('users', 'you'));
+        return view('user.index', compact('users', 'you'));
     }
 
     /**
@@ -43,7 +43,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('dashboard.admin.userShow', compact('user'));
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -59,7 +59,7 @@ class UsersController extends Controller
         $companies = Company::all();
         $roles     = RolesService::get();
         $userRoles = explode(',',$user->menuroles);
-        return view('dashboard.admin.userEditForm', compact('user', 'companies','roles','userRoles'));
+        return view('user.edit', compact('user', 'companies','roles','userRoles'));
     }
 
     /**

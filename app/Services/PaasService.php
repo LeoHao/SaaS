@@ -12,9 +12,9 @@ class PaasService
         //专网
     ];
 
+
     private static function connect()
     {
-
         $client = new \Swoole\Client(SWOOLE_SOCK_TCP);
         if (!$client->connect(config('paas.ip'), config('paas.port'), -1)) {
             exit("connect failed. Error: {$client->errCode}\n");
@@ -28,28 +28,33 @@ class PaasService
 
     /**
      * @param  string  $action
-     * @param  array  $mac
+     * @param  array  $device
      * @param  array  $params
      */
-    public function send(string $action, $mac = [], $params = [])
+    public function send(string $action, $device = [], $params = [])
     {
         if (!in_array($action, self::$actionList)) {
             return false;
         }
 
         $data = [
-            'action'    => $action,
-            'auth_name' => 'SaaS',
-            'saas_ip'   => $_SERVER['SERVER_ADDR'],
-            'key'       => crc32('1234567890'),
-            'mac'       => $mac,
+            'Action' => $action,
+            'ClientType' => 'SaaS',
+            'CpeMac' => $device['mac'],
+            'SecretKey' => crc32($action.'this is saas sncode'),
+            'ActionExt' => [
+                'node_id'=>$params['node']['id'],
+                'dest_id'=>$params['dest']['id'],
+                'bw'=>$params['bandwidth']['num'],
+            ],
         ];
+        dd($data);
+        $client = self::connect();
 
-        $sendData = array_merge($data, $params);
-        $client   = self::connect();
+        $client->send(json_encode($data));
+        //echo $client->recv();//接收返回值
+        //$client->send(json_encode($data));
         $this->close($client);
-        //        echo $client->recv();//接收返回值
-        //        $client->send(json_encode($sendData));
     }
 
     /**

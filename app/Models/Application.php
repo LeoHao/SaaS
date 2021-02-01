@@ -9,23 +9,43 @@ class Application extends Model
 {
     use HasFactory;
 
-    public function device(){
-        return $this->hasOne('App\Models\Device','id','device_id');
+    /**
+     * @var mixed
+     */
+    private $company_id;
+
+    public function device()
+    {
+        return $this->hasOne('App\Models\Device', 'id', 'device_id');
     }
 
-    public function company(){
-        return $this->hasOne('App\Models\Company','id','company_id');
+    public function company()
+    {
+        return $this->hasOne('App\Models\Company', 'id', 'company_id');
     }
 
-    public function plugin(){
-        return $this->hasOne('App\Models\Plugin','id','plugin_id');
+    public function plugin()
+    {
+        return $this->hasOne('App\Models\Plugin', 'id', 'plugin_id');
     }
 
-    public function duration(){
-        return $this->hasOne('App\Models\Duration','id','duration_id');
+    public function duration()
+    {
+        return $this->hasOne('App\Models\Duration', 'id', 'duration_id');
     }
 
-    public function bandwidth(){
-        return $this->hasOne('App\Models\Bandwidth','id','bandwidth_id');
+    public function bandwidth()
+    {
+        return $this->hasOne('App\Models\Bandwidth', 'id', 'bandwidth_id');
+    }
+
+    public function dest()
+    {
+        return $this->hasOne('App\Models\Dest', 'id', 'dest_id');
+    }
+
+    public function node()
+    {
+        return $this->hasOne('App\Models\Node', 'id', 'node_id');
     }
 }

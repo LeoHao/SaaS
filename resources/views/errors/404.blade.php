@@ -1,29 +1,32 @@
-@extends('dashboard.errorBase')
-
-@section('content')
-
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <div class="clearfix">
-            <h1 class="float-left display-3 mr-4">404</h1>
-            <h4 class="pt-3">Oops! You're lost.</h4>
-            <p class="text-muted">The page you are looking for was not found.</p>
-          </div>
-          <div class="input-prepend input-group">
-            <div class="input-group-prepend"><span class="input-group-text">
-                <svg class="c-icon">
-                  <use xlink:href="assets/icons/free-symbol-defs.svg#cui-magnifying-glass"></use>
-                </svg></span></div>
-            <input class="form-control" id="prependedInput" size="16" type="text" placeholder="What are you looking for?"><span class="input-group-append">
-              <button class="btn btn-info" type="button">Search</button></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-@endsection
-
-@section('javascript')
-
-@endsection
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>404</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+  <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/404style.css') }}">
+</head>
+<body>
+	<div id="container" class="container">
+		<ul id="scene" class="scene">
+			<li class="layer" data-depth="1.00"><img src="{{ asset('images/404/404-01.png') }}"></li>
+			<li class="layer" data-depth="0.60"><img src="{{ asset('images/404/shadows-01.png') }}"></li>
+			<li class="layer" data-depth="0.20"><img src="{{ asset('images/404/monster-01.png') }}"></li>
+			<li class="layer" data-depth="0.40"><img src="{{ asset('images/404/text-01.png') }}"></li>
+			<li class="layer" data-depth="0.10"><img src="{{ asset('images/404/monster-eyes-01.png') }}"></li>
+		</ul>
+		<a href="/" class="btn">返回首页</a>
+	</div>
+</body>
+<!-- Scripts -->
+	<script src="{{ asset('js/parallax.js') }}"></script>
+	<script>
+	// Pretty simple huh?
+	var scene = document.getElementById('scene');
+	var parallax = new Parallax(scene);
+	</script>
+</html>

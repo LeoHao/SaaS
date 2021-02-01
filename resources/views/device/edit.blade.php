@@ -1,8 +1,8 @@
-@extends('dashboard.base')
+@extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="fade-in">
+    <div class="main-body">
+    <div class="page-wrapper">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">

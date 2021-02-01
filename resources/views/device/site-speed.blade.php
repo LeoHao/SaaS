@@ -1,112 +1,74 @@
-@extends('dashboard.base')
+@extends('layouts.app')
 
 @section('css')
     <link href="{{ asset('css/dataTables.bootstrap4.css') }}" rel="stylesheet">
+    <style>
+    .custom {
+        width: 200px !important;
+    }
+    </style>
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="fade-in">
+  <div class="row m-auto">
+      <div class="col-auto">
+           <button type="button" class="btn btn-lg btn-outline-warning select-checked custom" value="1">
+               <i class="fab fa-github text-dark fa-7x"></i>
+          </button>
+      </div>
 
-            <div class="row m-auto">
-                <div class="col-lg-2">
-                    <div class="card">
-                        <div class="card-header bg-facebook content-center border" id="1">
-                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
-                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#facebook-f') }}"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-->
-                <div class="col-sm-6 col-lg-2">
-                    <div class="card">
-                        <div class="card-header bg-twitter content-center border" id="2">
-                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
-                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#twitter') }}"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-->
-                <div class="col-sm-6 col-lg-2">
-                    <div class="card">
-                        <div class="card-header bg-linkedin content-center border" id="3">
-                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
-                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#linkedin') }}"></use>
-                            </svg>
+       <div class="col-auto">
+           <button type="button" class="btn btn-lg btn-outline-warning select-checked custom" value="2">
+               <i class="fab fa-facebook-f text-primary fa-7x"></i>
+          </button>
+      </div>
 
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-->
-                <div class="col-sm-6 col-lg-2">
-                    <div class="card">
-                        <div class="card-header bg-github content-center border" id="4">
-                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
-                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#github') }}"></use>
-                            </svg>
+      <div class="col-auto">
+           <button type="button" class="btn btn-lg btn-outline-warning select-checked custom" value="3">
+               <i class="fab fa-youtube text-danger fa-7x"></i>
+          </button>
+      </div>
+  </div>
+  <br>
 
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-->
+  <div class="row align-items-center">
+      <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+          <button class="btn btn-block btn-outline-success duration" type="button" value="1">
+                <i class="fa fa-calendar text-primary fa-1x">1个月</i>
+          </button>
+      </div>
+      <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+          <button class="btn btn-block btn-outline-success duration" type="button" value="2">
+              <i class="fa fa-calendar text-primary fa-1x">2个月</i>
+          </button>
+      </div>
+      <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+          <button class="btn btn-block btn-outline-success duration" type="button" value="3">
+                <i class="fa fa-calendar text-primary fa-1x">3个月</i>
+          </button>
+      </div>
 
-                <div class="col-sm-6 col-lg-2">
-                    <div class="card">
-                        <div class="card-header bg-stack-overflow content-center border" id="5">
-                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
-                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#stack-overflow') }}"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-->
+      <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+          <button class="btn btn-block btn-outline-success duration" type="button" value="4">
+              <i class="fa fa-calendar text-primary fa-1x">4个月</i>
+          </button>
+      </div>
 
-                <div class="col-sm-6 col-lg-2">
-                    <div class="card">
-                        <div class="card-header bg-youtube content-center border" id="6">
-                            <svg class="c-icon c-icon-3xl text-white my-4 select-checked">
-                                <use xlink:href="{{ asset('/assets/icons/brands/brands-symbol-defs.svg#youtube') }}"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-->
-            </div>
-            <br>
+      <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
+          <button class="btn btn-block btn-outline-success duration" type="button" value="5">
+              <i class="fa fa-calendar text-primary fa-1x">5个月</i>
+          </button>
+      </div>
+  </div>
+  <br>
 
-            <div class="row align-items-center">
-                <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
-                    <button class="btn btn-block btn-outline-success duration" type="button" value="1">1个月</button>
-                </div>
-                <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
-                    <button class="btn btn-block btn-outline-success duration" type="button" value="2">2个月</button>
-                </div>
-                <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
-                    <button class="btn btn-block btn-outline-success duration" type="button" value="3">3个月</button>
-                </div>
+  <div class="col text-center">
+      <button class="btn btn-success col-3" type="button" id="speed">
+         <i class="fa fa-bolt text-danger fa-3x">加速</i>
 
-                <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
-                    <button class="btn btn-block btn-outline-success duration" type="button" value="4">4个月</button>
-                </div>
+      </button>
+  </div>
 
-                <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center">
-                    <button class="btn btn-block btn-outline-success duration" type="button" value="5">5个月</button>
-                </div>
-            </div>
-            <br>
-
-            <div class="col text-center">
-                <button class="btn btn-success col-3" type="button" id="speed">
-                    <svg class="c-icon">
-                        <use xlink:href="{{ asset('/icons/sprites/brand.svg#cib-mediafire') }}"></use>
-                    </svg>
-                    加速
-                </button>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('javascript')
@@ -114,12 +76,13 @@
         $(document).ready(function () {
             var id
             var duration
-            $(".border").click(function () {
-                $(".border").removeClass('border-success');
-                $(this).addClass("border-success");
-                $(".select-checked").removeClass('text-success');
-                $(this).children('svg').addClass("text-success");
-                id = $(this).attr('id')
+            $(".select-checked").click(function () {
+                $(".select-checked").removeClass('btn-warning');
+                $(".select-checked").addClass('btn-outline-warning');
+
+                $(this).addClass("btn-warning");
+                $(this).removeClass("btn-outline-warning");
+                id = $(this).val()
             })
 
             $(".duration").click(function () {

@@ -19,24 +19,21 @@ class GetSidebarMenu implements MenuInterface{
         $this->mb = new MenuBuilder();
     }
 
-    private function getMenuFromDB($menuId, $menuName){
+    private function getMenuFromDB($menuName){
         $this->menu = Menus::join('menu_role', 'menus.id', '=', 'menu_role.menus_id')
             ->select('menus.*')
-            ->where('menus.menu_id', '=', $menuId)
             ->where('menu_role.role_name', '=', $menuName)
             ->orderBy('menus.sequence', 'asc')->get();
     }
 
-    public function get($role, $menuId=1){
-        $this->getMenuFromDB($menuId, $role);
+    public function get($role){
+        $this->getMenuFromDB($role);
         $rfd = new RenderFromDatabaseData;
         return $rfd->render($this->menu);
     }
 
-    public function getAll( $menuId=2 ){
-        $this->menu = Menus::select('menus.*')
-            ->where('menus.menu_id', '=', $menuId)
-            ->orderBy('menus.sequence', 'asc')->get();
+    public function getAll(){
+        $this->menu = Menus::select('menus.*')->orderBy('menus.sequence', 'asc')->get();
         $rfd = new RenderFromDatabaseData;
         return $rfd->render($this->menu);
     }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Dest;
 use App\Models\Device;
+use App\Models\Node;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -24,10 +26,10 @@ class DeviceController extends Controller
     public function index(Request $request)
     {
 
-//        $device = DB::table('saas.devices as sd')
-//            ->leftJoin('paas.devices as pd', 'sd.id', '=', 'pd.id')
-//            ->get();
-        $data = Device::where('company_id',2)->with(['companyPlugins'])->paginate(20);
+        //        $device = DB::table('saas.devices as sd')
+        //            ->leftJoin('paas.devices as pd', 'sd.id', '=', 'pd.id')
+        //            ->get();
+        $data = Device::where('company_id', 2)->with(['companyPlugins'])->paginate(20);
         return view('device.index', [
             'data' => $data,
         ]);
@@ -53,21 +55,21 @@ class DeviceController extends Controller
             $model->save();
 
             $message = [
-                'type' => 'success',
+                'type'    => 'success',
                 'message' => '设备添加成功',
             ];
         }
 
-        if (!$device_is_online){
+        if (!$device_is_online) {
             $message = [
-                'type' => 'warning',
+                'type'    => 'warning',
                 'message' => '设备不在线,请连入网络',
             ];
         }
 
-        if (!$device_is_exists){
+        if (!$device_is_exists) {
             $message = [
-                'type' => 'danger',
+                'type'    => 'danger',
                 'message' => '设备已被绑定或设备Mac地址错误',
             ];
         }
@@ -86,70 +88,72 @@ class DeviceController extends Controller
 
     public function update(Request $request)
     {
-        $model = Device::where('id', '=', $request->input('id'))->first();
+        $model       = Device::where('id', '=', $request->input('id'))->first();
         $model->name = $request->input('name');
         $model->save();
 
         $message = [
-            'type' => 'success',
+            'type'    => 'success',
             'message' => '更新成功',
         ];
 
         $request->session()->flash('message', $message);
-        return redirect()->route('device.edit', ['id'=>$request->input('id')]);
+        return redirect()->route('device.edit', ['id' => $request->input('id')]);
     }
 
-    public function special(Request $request){
+    public function special(Request $request)
+    {
         $device_model = Device::find($request->input('device_id'));
-        $location_model = [];
-        $destination_model = [];
+        $node         = Node::all();
+        $dest         = Dest::all();
 
-        return view('device.special',[
+        return view('device.special', [
             'device' => $device_model,
-            'location' => $location_model,
-            'destination' => $destination_model,
+            'nodes'   => $node,
+            'dests'   => $dest,
         ]);
     }
 
-    public function specialOpen(Request $request){
-//        $location = Device::find($request->input('location'));
-//        $destination = Device::find($request->input('destination'));
-
-        $model = new Application;
-        $model->company_id = Auth::user()->company_id;
-        $model->device_id = $request->input('device_id');
-        $model->duration_id = $request->input('duration');//时长
+    public function specialOpen(Request $request)
+    {
+        $model               = new Application;
+        $model->company_id   = Auth::user()->company_id;
+        $model->device_id    = $request->input('device_id');
+        $model->duration_id  = $request->input('duration'); //时长
         $model->bandwidth_id = $request->input('bandwidth');//带宽
-        $model->plugin_id = $request->input('plugin_id');//插件
+        $model->plugin_id    = $request->input('plugin_id');//插件
+        $model->node_id      = $request->input('node_id');  //所在地
+        $model->dest_id      = $request->input('dest_id');  //目的地
         $model->save();
 
 
         return redirect()->route('device.index');
     }
 
-    public function siteSpeed(Request $request){
-        $device_model = Device::find($request->input('device_id'));
-        $location_model = [];
+    public function siteSpeed(Request $request)
+    {
+        $device_model      = Device::find($request->input('device_id'));
+        $location_model    = [];
         $destination_model = [];
 
-        return view('device.site-speed',[
-            'device' => $device_model,
-            'location' => $location_model,
+        return view('device.site-speed', [
+            'device'      => $device_model,
+            'location'    => $location_model,
             'destination' => $destination_model,
         ]);
     }
 
-    public function siteSpeedOpen(Request $request){
-        $model = new Application;
-        $model->company_id = Auth::user()->company_id;
-        $model->device_id = $request->input('device_id');
-        $model->duration_id = $request->input('duration');//时长
-        $model->plugin_id = $request->input('plugin_id');//插件
-        $model->bandwidth_id = 0;//带宽
+    public function siteSpeedOpen(Request $request)
+    {
+        $model              = new Application;
+        $model->company_id  = Auth::user()->company_id;
+        $model->device_id   = $request->input('device_id');
+        $model->duration_id = $request->input('duration'); //时长
+        $model->plugin_id   = $request->input('plugin_id');//插件
         $model->save();
 
         $message = [
-            'type' => 'success',
+            'type'    => 'success',
             'message' => '审核中',
         ];
 
