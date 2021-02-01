@@ -46,11 +46,11 @@ class MenusTableSeeder extends Seeder
         $href = $this->subFolder.$href;
         if ($this->dropdown === false) {
             DB::table('menus')->insert([
-                'slug' => 'link', 'name' => $name, 'icon' => $icon, 'href' => $href, 'menu_id' => $this->menuId, 'sequence' => $this->sequence,
+                'slug' => 'link', 'name' => $name, 'icon' => $icon, 'href' => $href, 'sequence' => $this->sequence,
             ]);
         } else {
             DB::table('menus')->insert([
-                'slug'     => 'link', 'name' => $name, 'icon' => $icon, 'href' => $href, 'menu_id' => $this->menuId, 'parent_id' => $this->dropdownId[count($this->dropdownId) - 1],
+                'slug'     => 'link', 'name' => $name, 'icon' => $icon, 'href' => $href, 'parent_id' => $this->dropdownId[count($this->dropdownId) - 1],
                 'sequence' => $this->sequence,
             ]);
         }
@@ -74,7 +74,7 @@ class MenusTableSeeder extends Seeder
     public function insertTitle($roles, $name)
     {
         DB::table('menus')->insert([
-            'slug' => 'title', 'name' => $name, 'menu_id' => $this->menuId, 'sequence' => $this->sequence,
+            'slug' => 'title', 'name' => $name, 'sequence' => $this->sequence,
         ]);
         $this->sequence++;
         $lastId = DB::getPdo()->lastInsertId();
@@ -90,7 +90,7 @@ class MenusTableSeeder extends Seeder
             $parentId = null;
         }
         DB::table('menus')->insert([
-            'slug' => 'dropdown', 'name' => $name, 'icon' => $icon, 'menu_id' => $this->menuId, 'sequence' => $this->sequence, 'parent_id' => $parentId,
+            'slug' => 'dropdown', 'name' => $name, 'icon' => $icon, 'sequence' => $this->sequence, 'parent_id' => $parentId,
         ]);
         $lastId = DB::getPdo()->lastInsertId();
         array_push($this->dropdownId, $lastId);

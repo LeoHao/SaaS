@@ -23,7 +23,7 @@ class RolesController extends Controller
         ->select('roles.*', 'role_hierarchy.hierarchy')
         ->orderBy('hierarchy', 'asc')
         ->paginate(20);
-        return view('dashboard.roles.index', array(
+        return view('roles.index', array(
             'roles' => $roles,
         ));
     }
@@ -63,7 +63,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('dashboard.roles.create');
+        return view('roles.create');
     }
 
     /**
@@ -101,7 +101,7 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        return view('dashboard.roles.show', array(
+        return view('roles.show', array(
             'role' => Role::where('id', '=', $id)->first()
         ));
     }
@@ -114,7 +114,7 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.roles.edit', array(
+        return view('roles.edit', array(
             'role' => Role::where('id', '=', $id)->first()
         ));
     }
@@ -143,19 +143,21 @@ class RolesController extends Controller
      */
     public function destroy($id, Request $request)
     {
+
+
         $role = Role::where('id', '=', $id)->first();
         $roleHierarchy = RoleHierarchy::where('role_id', '=', $id)->first();
         $menuRole = Menurole::where('role_name', '=', $role->name)->first();
         if(!empty($menuRole)){
             $request->session()->flash('message', "Can't delete. Role has assigned one or more menu elements.");
             $request->session()->flash('back', 'roles.index');
-            return view('dashboard.shared.universal-info');
+            return view('layouts.universal-info');
         }else{
             $role->delete();
             $roleHierarchy->delete();
             $request->session()->flash('message', "Successfully deleted role");
             $request->session()->flash('back', 'roles.index');
-            return view('dashboard.shared.universal-info');
+            return view('layouts.universal-info');
         }
     }
 }

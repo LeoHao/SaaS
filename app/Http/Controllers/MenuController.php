@@ -68,7 +68,7 @@ class MenuController extends Controller
     */
 
     public function delete(Request $request){
-        $menus = Menus::where('menu_id', '=', $request->input('id'))->first();
+        $menus = Menus::first();
         if(!empty($menus)){
             $request->session()->flash('message', "Can't delete. This menu have assigned menu elements");
             $request->session()->flash('back', 'menu.menu.index');

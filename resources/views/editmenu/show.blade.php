@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-header"><h4>Show menu element</h4></div>
+          <div class="card-header"><h4>显示导航</h4></div>
             <div class="card-body">
                 @if(Session::has('message'))
                 <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
@@ -14,37 +14,15 @@
                         <tbody>
                             <tr>
                                 <th>
-                                    Menu
+                                    角色
                                 </th>
                                 <td>
-                                    @foreach($menulist as $menu1)
-                                    @if($menu1->id == $menuElement->menu_id  )
-                                      {{ $menu1->name }}
-                                    @endif
-                                  @endforeach
+                                    {{ implode(',',array_column($menuroles->toArray(),'role_name')) }}
                                 </td>
                             </tr>
                             <tr>
                                 <th>
-                                    User Roles
-                                </th>
-                                <td>
-                                    <?php
-                                    $first = true;
-                                    foreach ($menuroles as $menurole) {
-                                        if ($first === true) {
-                                            $first = false;
-                                        } else {
-                                            echo ', ';
-                                        }
-                                        echo $menurole->role_name;
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Type
+                                    类型
                                 </th>
                                 <td>
                                     {{ $menuElement->slug }}
@@ -52,7 +30,7 @@
                             </tr>
                             <tr>
                                 <th>
-                                    Href:
+                                    链接:
                                 </th>
                                 <td>
                                     {{ $menuElement->href }}
@@ -60,19 +38,15 @@
                             </tr>
                             <tr>
                                 <th>
-                                    Dropdown parent:
+                                    父级导航:
                                 </th>
                                 <td>
-                                    <?php
-                                    if (isset($menuElement->parent_name)) {
-                                        echo $menuElement->parent_name;
-                                    }
-                                    ?>
+                                    {{ $menuElement->parent_name ?? '' }}
                                 </td>
                             </tr>
                             <tr>
                                 <th>
-                                    Icon
+                                    图标
                                 </th>
                                 <td>
                                     <i class="{{ $menuElement->icon }}"></i>
@@ -82,7 +56,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a class="btn btn-primary" href="{{ route('menu.index', ['menu' => $menuElement->menu_id]) }}">Return</a>
+                    <a class="btn btn-primary" href="{{ route('menu.index') }}">返回</a>
             </div>
           </div>
         </div>

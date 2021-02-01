@@ -86,7 +86,7 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/coreui/menu-edit.js":
+/***/ "./resources/js/menu-edit.js":
 /*!******************************************!*\
   !*** ./resources/js/coreui/menu-edit.js ***!
   \******************************************/
@@ -115,7 +115,7 @@ this.buildSelectParent = function (data) {
 };
 
 this.updateSelectParent = function () {
-  axios.get('/menu/element/get-parents?menu=' + document.getElementById("menu").value).then(function (response) {
+  axios.get('/menu/element/get-parents').then(function (response) {
     document.getElementById("parent").innerHTML = self.buildSelectParent(response.data);
   })["catch"](function (error) {
     // handle error

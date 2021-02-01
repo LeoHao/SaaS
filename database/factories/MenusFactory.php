@@ -15,7 +15,6 @@ $factory->define(Menus::class, function (Faker $faker) {
         'icon'          => NULL,
         'slug'          => 'link',
         'parent_id'     => NULL,
-        'menu_id'       => 1,
         'sequence'      => 1
     ];
 });

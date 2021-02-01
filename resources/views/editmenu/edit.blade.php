@@ -67,7 +67,7 @@
                                     </div>
                                     <br><br>
                                     <div id="div-dropdown-parent">
-                                        父节点:
+                                        所属父级:
                                         <input type="hidden" id="parentId" value="{{ $menuElement->parent_id }}" />
                                         <select class="form-control" name="parent" id="parent">
 
@@ -86,7 +86,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="row float-right">
-                        <a class="btn btn-sm btn-warning" href="{{ route('menu.index', ['menu' => $menuElement->menu_id]) }}">返回</a>
+                        <a class="btn btn-sm btn-warning" href="{{ route('menu.index') }}">返回</a>
                          <button class="btn btn-sm btn-primary" type="submit">保存</button>
                     </div>
                 </div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Menurole;
-use App\Models\Menulist;
 use App\Models\Menus;
 use Illuminate\Validation\Rule;
 use App\Services\RolesService;
@@ -24,32 +23,19 @@ class MenuElementController extends Controller
 
     public function index(Request $request)
     {
-        $menuInfo = Menus::select('menus.*')->where('menus.menu_id', '=', 1)->orderBy('menus.sequence', 'asc')->paginate(20);
-
-        if ($request->has('menu')) {
-            $menuId = $request->input('menu');
-        } else {
-            $menuId = Menulist::first();
-            if (empty($menuId)) {
-                $menuId = 1;
-            } else {
-                $menuId = $menuId->id;
-            }
-        }
+        $menuInfo = Menus::select('menus.*')->orderBy('menus.sequence', 'asc')->paginate(20);
 
         return view('editmenu.index', [
-            'menulist'   => Menulist::all(),
             'role'       => 'admin',
             'roles'      => RolesService::get(),
             'menuToEdit' => $menuInfo,
-            'thisMenu'   => $menuId,
         ]);
     }
 
     public function moveUp(Request $request)
     {
         $element       = Menus::where('id', '=', $request->input('id'))->first();
-        $switchElement = Menus::where('menu_id', '=', $element->menu_id)->where('sequence', '<', $element->sequence)->orderBy('sequence', 'desc')->first();
+        $switchElement = Menus::where('sequence', '<', $element->sequence)->orderBy('sequence', 'desc')->first();
         if (!empty($switchElement)) {
             $temp                    = $element->sequence;
             $element->sequence       = $switchElement->sequence;
@@ -57,13 +43,13 @@ class MenuElementController extends Controller
             $element->save();
             $switchElement->save();
         }
-        return redirect()->route('menu.index', ['menu' => $element->menu_id]);
+        return redirect()->route('menu.index');
     }
 
     public function moveDown(Request $request)
     {
         $element       = Menus::where('id', '=', $request->input('id'))->first();
-        $switchElement = Menus::where('menu_id', '=', $element->menu_id)->where('sequence', '>', $element->sequence)->orderBy('sequence', 'asc')->first();
+        $switchElement = Menus::where('sequence', '>', $element->sequence)->orderBy('sequence', 'asc')->first();
         if (!empty($switchElement)) {
             $temp                    = $element->sequence;
             $element->sequence       = $switchElement->sequence;
@@ -71,13 +57,12 @@ class MenuElementController extends Controller
             $element->save();
             $switchElement->save();
         }
-        return redirect()->route('menu.index', ['menu' => $element->menu_id]);
+        return redirect()->route('menu.index', );
     }
 
     public function getParents(Request $request)
     {
-        $menuId = $request->input('menu');
-        $result = Menus::where('menus.menu_id', '=', $menuId)->where('menus.slug', '=', 'dropdown')->orderBy('menus.sequence', 'asc')->get();
+        $result = Menus::where('menus.slug', '=', 'dropdown')->orderBy('menus.sequence', 'asc')->get();
         return response()->json($result);
     }
 
@@ -85,7 +70,6 @@ class MenuElementController extends Controller
     {
         return view('editmenu.create', [
             'roles'    => RolesService::get(),
-            'menulist' => Menulist::all(),
         ]);
     }
 
@@ -105,9 +89,9 @@ class MenuElementController extends Controller
         return $result;
     }
 
-    public function getNextSequence($menuId)
+    public function getNextSequence()
     {
-        $result = Menus::select('menus.sequence')->where('menus.menu_id', '=', $menuId)->orderBy('menus.sequence', 'desc')->first();
+        $result = Menus::select('menus.sequence')->orderBy('menus.sequence', 'desc')->first();
         if (empty($result)) {
             $result = 1;
         } else {
@@ -121,7 +105,6 @@ class MenuElementController extends Controller
         $validatedData  = $request->validate($this->getValidateArray());
         $menus          = new Menus();
         $menus->slug    = $request->input('type');
-        $menus->menu_id = $request->input('menu');
         $menus->name    = $request->input('name');
         if (strlen($request->input('icon')) > 0) {
             $menus->icon = $request->input('icon');
@@ -132,7 +115,7 @@ class MenuElementController extends Controller
         if ($request->input('type') !== 'title' && $request->input('parent') !== 'none') {
             $menus->parent_id = $request->input('parent');
         }
-        $menus->sequence = $this->getNextSequence($request->input('menu'));
+        $menus->sequence = $this->getNextSequence();
         $menus->save();
         foreach ($request->input('role') as $role) {
             $menuRole            = new Menurole();
@@ -150,7 +133,6 @@ class MenuElementController extends Controller
 
         return view('editmenu.edit', [
             'roles'       => RolesService::get(),
-            'menulist'    => Menulist::all(),
             'menuElement' => Menus::where('id', '=', $request->input('id'))->first(),
             'menuroles'   => Menurole::where('menus_id', '=', $request->input('id'))->get(),
         ]);
@@ -195,7 +177,6 @@ class MenuElementController extends Controller
             $menuElement = Menus::where('id', '=', $request->input('id'))->first();
         }
         return view('editmenu.show', [
-            'menulist'    => Menulist::all(),
             'menuElement' => $menuElement,
             'menuroles'   => Menurole::where('menus_id', '=', $request->input('id'))->get(),
         ]);
@@ -204,12 +185,11 @@ class MenuElementController extends Controller
     public function delete(Request $request)
     {
         $menus  = Menus::where('id', '=', $request->input('id'))->first();
-        $menuId = $menus->menu_id;
         $menus->delete();
         Menurole::where('menus_id', '=', $request->input('id'))->delete();
         $request->session()->flash('message', 'Successfully deleted menu element');
         $request->session()->flash('back', 'menu.index');
-        $request->session()->flash('backParams', ['menu' => $menuId]);
+        $request->session()->flash('backParams');
         return view('shared.universal-info');
     }
 
